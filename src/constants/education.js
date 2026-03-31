@@ -4,7 +4,7 @@ export const education = [
     institution: "Kalinga Institute of Industrial Technology (KIIT)",
     location: "Bhubaneswar, Odisha, India",
     period: "2021 – 2025",
-    score: "CGPA: 8.43 / 8.63",
+    score: "8.63",
     description: "Focused on software engineering, data structures, algorithms, full-stack development, and cloud computing.",
   },
   {

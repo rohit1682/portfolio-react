@@ -19,26 +19,6 @@ export default function Hobbies() {
       <div className="container">
         <SectionTitle title="Beyond the Code" subtitle="What I love doing outside of work" />
 
-        {/* Photo strip */}
-        <motion.div
-          className={styles.photoStrip}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          {[personalInfo.photos.cover].map((src, i) => (
-            <motion.div
-              key={i}
-              className={styles.stripPhoto}
-              whileHover={{ scale: 1.05, zIndex: 2 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img src={src} alt={`Rohit ${i + 1}`} />
-            </motion.div>
-          ))}
-        </motion.div>
-
         <div className={styles.grid}>
           {hobbies.map((hobby, i) => {
             const Icon = iconMap[hobby.icon];
