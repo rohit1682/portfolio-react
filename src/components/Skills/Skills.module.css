@@ -1,0 +1,95 @@
+.tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab {
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-body);
+}
+
+.tab:hover { color: var(--text-primary); }
+
+.tabActive {
+  background: var(--gradient);
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(108,99,255,0.3);
+}
+
+/* Bars view */
+.barsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.group { padding: 32px; }
+
+.category {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skillItem { margin-bottom: 18px; }
+.skillItem:last-child { margin-bottom: 0; }
+
+.skillHeader { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.skillName { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
+.skillLevel { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+
+.track { height: 6px; background: rgba(108,99,255,0.1); border-radius: 3px; overflow: hidden; }
+.fill { height: 100%; background: var(--gradient); border-radius: 3px; }
+
+/* Tags view */
+.tagsView { display: flex; flex-direction: column; gap: 32px; }
+
+.tagGroup {}
+
+.tagCategory {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.tagList { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.tagChip {
+  display: inline-block;
+  padding: 7px 16px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: default;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+  .barsGrid { grid-template-columns: 1fr; }
+}

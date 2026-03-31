@@ -1,0 +1,33 @@
+export const personalInfo = {
+  name: "Rohit Ghosh",
+  title: "Full Stack Developer",
+  email: "rht.ghs10@gmail.com",
+  phone: "+91 8276072126",
+  location: "Kolkata, West Bengal, India",
+  currentRole: "Junior Software Developer @ EPAM Systems",
+  experience: "3+ Years in Full Stack Development",
+  summary:
+    "B.Tech Computer Science graduate with strong expertise in full stack development, problem solving, and software engineering. Experienced in building scalable applications using modern web technologies and cloud platforms. Demonstrates leadership, project management, and strong analytical abilities.",
+  github: "https://github.com/rohit1682",
+  linkedin: "https://www.linkedin.com/in/rohit-ghosh-b7b5201a6/",
+  leetcode: "https://leetcode.com/u/rohitG33/",
+  profileImage: "/assets/images/profile.jpg",
+  coverImage: "/assets/images/front_cover.jpg",
+  photos: {
+    profile: "/assets/images/profile.jpg",
+    profile2: "/assets/images/profile2.jpg",
+    cover: "/assets/images/front_cover.jpg",
+    intro: "/assets/images/intro.jpg",
+  },
+  typedRoles: [
+    "Full Stack Developer",
+    "Software Developer",
+    "React Developer",
+    "Java Developer",
+    "Public Speaker",
+    "Photographer",
+  ],
+  spokenLanguages: ["English", "German (basic)"],
+  interests: ["Photography", "Finance", "Cricket", "Badminton", "Martial Arts"],
+  currentlyLearning: ["Angular", "Advanced Node.js", "AWS"],
+};

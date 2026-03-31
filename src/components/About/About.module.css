@@ -1,0 +1,181 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 70px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+/* Photo */
+.photoSide { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+.photoStack {
+  position: relative;
+  width: 300px;
+  height: 380px;
+}
+
+.photoFrame {
+  position: relative;
+  width: 280px;
+  height: 340px;
+}
+
+.photo {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(10%);
+  transition: filter 0.4s ease;
+}
+
+.photoFrame:hover .photo { filter: grayscale(0%); }
+
+.photoAccent {
+  position: absolute;
+  bottom: -12px; right: -12px;
+  width: 100%; height: 100%;
+  border-radius: 20px;
+  border: 2px solid var(--accent);
+  opacity: 0.4;
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.photoFrame:hover .photoAccent { bottom: -16px; right: -16px; opacity: 0.7; }
+
+.photoGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: var(--gradient);
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+  mix-blend-mode: overlay;
+}
+
+.photoFrame:hover .photoGlow { opacity: 0.15; }
+
+/* Floating small photo */
+.photoFloating {
+  position: absolute;
+  bottom: 0; right: -10px;
+  z-index: 3;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.photoSmall {
+  width: 100px; height: 120px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.currentRole {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.roleDot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #43e97b;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(67,233,123,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(67,233,123,0); }
+}
+
+/* Text */
+.textSide h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.textSide p {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  margin-bottom: 24px;
+}
+
+.infoItem { display: flex; flex-direction: column; gap: 3px; }
+.label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+.value { font-size: 0.88rem; color: var(--text-primary); font-weight: 500; }
+.link { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
+.link:hover { text-decoration: underline; }
+.available { font-size: 0.88rem; color: #43e97b; font-weight: 600; }
+
+.learning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.learningLabel { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+
+.btnRow { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.statCard { text-align: center; padding: 32px 20px; }
+.statIcon { color: var(--accent); margin-bottom: 12px; }
+
+.statNum {
+  font-size: 2.4rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statLabel { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+  .photoSide { order: -1; }
+  .photoStack { width: 240px; height: 300px; }
+  .photoFrame { width: 220px; height: 270px; }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .infoGrid { grid-template-columns: 1fr; }
+}
