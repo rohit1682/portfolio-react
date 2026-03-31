@@ -34,7 +34,7 @@ export const experience = [
     ],
   },
   {
-    role: "Virtual Developer",
+    role: "Virtual Developer Intern",
     company: "Salesforce",
     location: "Remote",
     type: "Remote",

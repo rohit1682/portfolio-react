@@ -27,7 +27,7 @@ export const personalInfo = {
     "Public Speaker",
     "Photographer",
   ],
-  spokenLanguages: ["English", "German (basic)"],
+  spokenLanguages: ["English", "German (basic), Hindi (native), Bengali (native)"],
   interests: ["Photography", "Finance", "Cricket", "Badminton", "Martial Arts"],
   currentlyLearning: ["Angular", "Advanced Node.js", "AWS"],
 };

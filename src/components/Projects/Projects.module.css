@@ -68,7 +68,7 @@
 .folder { color: var(--accent); }
 
 .links { display: flex; gap: 12px; }
-.links a { color: var(--text-muted); transition: color 0.2s ease; }
+.links a { color: var(--text-muted); margin-top: 15px; transition: color 0.2s ease; }
 .links a:hover { color: var(--accent); }
 
 .statusRow { margin-bottom: 10px; }
