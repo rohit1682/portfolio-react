@@ -21,7 +21,7 @@
   background: var(--gradient) !important;
   color: #fff !important;
   border-color: transparent !important;
-  box-shadow: 0 4px 16px rgba(108,99,255,0.3);
+  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.3);
 }
 
 .grid {
@@ -35,10 +35,12 @@
   padding: 26px;
   position: relative;
   overflow: hidden;
+  transition: var(--transition);
+  cursor: default;
 }
 
 .featured {
-  border-color: rgba(108,99,255,0.3);
+  border-color: rgba(230, 57, 70, 0.3);
 }
 
 .featured::before {
@@ -48,6 +50,18 @@
   height: 2px;
   background: var(--gradient);
 }
+
+/* Animated glow sweep on featured hover */
+.featured::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(230,57,70,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.featured:hover::after { opacity: 1; }
 
 .featuredBadge {
   position: absolute;
@@ -97,7 +111,7 @@
   font-size: 0.8rem; color: var(--text-secondary);
 }
 
-.checkIcon { color: var(--accent-3); flex-shrink: 0; margin-top: 1px; }
+.checkIcon { color: #34d399; flex-shrink: 0; margin-top: 1px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 7px; }
 

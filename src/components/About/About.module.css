@@ -152,7 +152,7 @@
 }
 
 .statCard { text-align: center; padding: 32px 20px; }
-.statIcon { color: var(--accent); margin-bottom: 12px; }
+.statIcon { color: var(--accent); margin-bottom: 12px; display: flex; justify-content: center; }
 
 .statNum {
   font-size: 2.4rem;

@@ -26,14 +26,14 @@ function SkillBar({ name, level, inView, delay }) {
 }
 
 const tagColors = [
-  "rgba(108,99,255,0.15)", "rgba(255,101,132,0.15)", "rgba(67,233,123,0.12)",
-  "rgba(56,249,215,0.12)", "rgba(255,193,7,0.12)", "rgba(0,188,212,0.12)", "rgba(233,30,99,0.12)",
+  "rgba(230,57,70,0.12)", "rgba(59,130,246,0.12)", "rgba(16,185,129,0.1)",
+  "rgba(245,158,11,0.1)", "rgba(139,92,246,0.1)", "rgba(236,72,153,0.1)", "rgba(20,184,166,0.1)",
 ];
 const tagBorders = [
-  "rgba(108,99,255,0.35)", "rgba(255,101,132,0.35)", "rgba(67,233,123,0.3)",
-  "rgba(56,249,215,0.3)", "rgba(255,193,7,0.3)", "rgba(0,188,212,0.3)", "rgba(233,30,99,0.3)",
+  "rgba(230,57,70,0.35)", "rgba(59,130,246,0.35)", "rgba(16,185,129,0.3)",
+  "rgba(245,158,11,0.3)", "rgba(139,92,246,0.3)", "rgba(236,72,153,0.3)", "rgba(20,184,166,0.3)",
 ];
-const tagText = ["#a09af8", "#ff8fa3", "#43e97b", "#38f9d7", "#ffc107", "#00bcd4", "#e91e63"];
+const tagText = ["#f87171", "#60a5fa", "#34d399", "#fbbf24", "#a78bfa", "#f472b6", "#2dd4bf"];
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState("bars");

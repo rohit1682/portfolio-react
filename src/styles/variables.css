@@ -1,25 +1,25 @@
 :root {
-  /* Colors */
-  --bg-primary: #0a0808;
-  --bg-secondary: #0f0c0c;
-  --bg-card: #141010;
-  --bg-card-hover: #1c1515;
+  /* Colors — deep crimson, not bright red */
+  --bg-primary: #080608;
+  --bg-secondary: #0d0a0d;
+  --bg-card: #120f12;
+  --bg-card-hover: #1a151a;
 
-  --accent: #e63946;
-  --accent-2: #ff8fa3;
-  --accent-3: #ff4d6d;
+  --accent: #b91c2e;
+  --accent-2: #e85d75;
+  --accent-3: #34d399;
 
-  --text-primary: #f2eeee;
-  --text-secondary: #a89090;
-  --text-muted: #6b5050;
+  --text-primary: #f0ecee;
+  --text-secondary: #a08898;
+  --text-muted: #6b4f5a;
 
-  --border: rgba(230, 57, 70, 0.15);
-  --border-hover: rgba(230, 57, 70, 0.4);
-  --glow: rgba(230, 57, 70, 0.18);
+  --border: rgba(185, 28, 46, 0.14);
+  --border-hover: rgba(185, 28, 46, 0.38);
+  --glow: rgba(185, 28, 46, 0.15);
 
-  /* Gradients */
-  --gradient: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
-  --gradient-2: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
+  /* Gradients — deep crimson → warm rose → amber hint */
+  --gradient: linear-gradient(135deg, #b91c2e 0%, #e85d75 60%, #f59e6b 100%);
+  --gradient-2: linear-gradient(135deg, #7c1d2e 0%, #b91c2e 100%);
 
   /* Typography */
   --font-body: 'Inter', sans-serif;

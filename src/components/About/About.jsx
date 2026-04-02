@@ -77,11 +77,26 @@ export default function About() {
 
         {/* Stats */}
         <motion.div className={styles.statsGrid} ref={statsRef} variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-          {stats.map((stat) => {
+          {stats.map((stat, idx) => {
             const Icon = iconMap[stat.icon];
             return (
-              <motion.div key={stat.label} className={`card ${styles.statCard}`} variants={staggerItem}>
-                {Icon && <Icon size={26} className={styles.statIcon} />}
+              <motion.div
+                key={stat.label}
+                className={`card ${styles.statCard}`}
+                variants={staggerItem}
+                whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(230,57,70,0.15)" }}
+              >
+                {Icon && (
+                  <motion.div
+                    className={styles.statIcon}
+                    initial={{ scale: 0, rotate: -20 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 + 0.2, duration: 0.5, ease: "backOut" }}
+                  >
+                    <Icon size={26} />
+                  </motion.div>
+                )}
                 <div className={styles.statNum}><Counter target={stat.value} inView={statsInView} /></div>
                 <div className={styles.statLabel}>{stat.label}</div>
               </motion.div>
