@@ -25,6 +25,7 @@ export default function Experience() {
             <motion.div
               key={i}
               className={styles.item}
+              style={{ "--item-color": item.color }}
               variants={fadeLeft}
               custom={i * 0.15}
               initial="hidden"

@@ -34,7 +34,7 @@
 .detailIcon {
   width: 44px; height: 44px;
   border-radius: var(--radius-md);
-  background: rgba(108, 99, 255, 0.1);
+  background: rgba(230, 57, 70, 0.1);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@
 .formGroup input:focus,
 .formGroup textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
 }
 
 .formGroup input::placeholder,

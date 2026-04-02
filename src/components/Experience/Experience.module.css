@@ -8,9 +8,9 @@
   position: absolute;
   left: 22px; top: 0; bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), var(--accent-2), transparent);
+  background: linear-gradient(to bottom, #3b82f6, var(--accent), var(--accent-2), transparent);
   transform-origin: top;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .item {
@@ -28,10 +28,18 @@
   display: flex; align-items: center; justify-content: center;
   color: #fff;
   z-index: 1;
-  box-shadow: 0 0 16px rgba(108,99,255,0.5);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
 }
 
-.card { padding: 28px; }
+.card {
+  padding: 28px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.item:hover .card {
+  border-left-color: var(--item-color, var(--accent));
+}
 
 .header {
   display: flex;
@@ -60,14 +68,14 @@
   line-height: 1.65;
 }
 
-.checkIcon { color: var(--accent-3); flex-shrink: 0; margin-top: 2px; }
+.checkIcon { color: #60a5fa; flex-shrink: 0; margin-top: 2px; }
 
 .headerRight { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 .currentBadge {
   font-size: 0.72rem; font-weight: 700;
-  color: #43e97b;
-  background: rgba(67,233,123,0.1);
-  border: 1px solid rgba(67,233,123,0.25);
+  color: #ff4d6d;
+  background: rgba(230, 57, 70,0.1);
+  border: 1px solid rgba(230, 57, 70,0.25);
   padding: 3px 10px; border-radius: 20px;
 }

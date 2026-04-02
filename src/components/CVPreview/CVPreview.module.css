@@ -11,8 +11,8 @@
 }
 
 .modal {
-  background: #13131f;
-  border: 1px solid rgba(108, 99, 255, 0.2);
+  background: #140e0e;
+  border: 1px solid rgba(230, 57, 70, 0.2);
   border-radius: 16px;
   width: 100%;
   max-width: 860px;
@@ -250,7 +250,7 @@
 /* Scrollbar */
 .modal::-webkit-scrollbar { width: 5px; }
 .modal::-webkit-scrollbar-track { background: transparent; }
-.modal::-webkit-scrollbar-thumb { background: rgba(108, 99, 255, 0.3); border-radius: 3px; }
+.modal::-webkit-scrollbar-thumb { background: rgba(230, 57, 70, 0.3); border-radius: 3px; }
 
 /* Responsive */
 @media (max-width: 720px) {

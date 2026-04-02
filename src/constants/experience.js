@@ -5,7 +5,7 @@ export const experience = [
     location: "Hyderabad, India",
     type: "On-site",
     period: "Jan 2026 – Present",
-    color: "#6c63ff",
+    color: "#e63946",
     current: true,
     points: [
       "Strengthened full-stack development expertise through guided training on React, Angular, and Node.js.",
@@ -22,7 +22,7 @@ export const experience = [
     location: "Hyderabad, India",
     type: "On-site",
     period: "Jan 2025 – Dec 2025",
-    color: "#6c63ff",
+    color: "#e63946",
     current: false,
     points: [
       "Developed scalable full-stack features for enterprise-grade applications.",

@@ -94,14 +94,14 @@
 .roleDot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: #43e97b;
+  background: #ff4d6d;
   animation: pulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(67,233,123,0.4); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(67,233,123,0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(230,57,70,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(230,57,70,0); }
 }
 
 /* Text */
@@ -130,7 +130,7 @@
 .value { font-size: 0.88rem; color: var(--text-primary); font-weight: 500; }
 .link { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
 .link:hover { text-decoration: underline; }
-.available { font-size: 0.88rem; color: #43e97b; font-weight: 600; }
+.available { font-size: 0.88rem; color: #ff4d6d; font-weight: 600; }
 
 .learning {
   display: flex;

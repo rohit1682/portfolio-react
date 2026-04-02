@@ -1,25 +1,25 @@
 :root {
   /* Colors */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #0f0f1a;
-  --bg-card: #13131f;
-  --bg-card-hover: #1a1a2e;
+  --bg-primary: #0a0808;
+  --bg-secondary: #0f0c0c;
+  --bg-card: #141010;
+  --bg-card-hover: #1c1515;
 
-  --accent: #6c63ff;
-  --accent-2: #ff6584;
-  --accent-3: #43e97b;
+  --accent: #e63946;
+  --accent-2: #ff8fa3;
+  --accent-3: #ff4d6d;
 
-  --text-primary: #f0f0f5;
-  --text-secondary: #9090a8;
-  --text-muted: #5a5a72;
+  --text-primary: #f2eeee;
+  --text-secondary: #a89090;
+  --text-muted: #6b5050;
 
-  --border: rgba(108, 99, 255, 0.15);
-  --border-hover: rgba(108, 99, 255, 0.4);
-  --glow: rgba(108, 99, 255, 0.2);
+  --border: rgba(230, 57, 70, 0.15);
+  --border-hover: rgba(230, 57, 70, 0.4);
+  --glow: rgba(230, 57, 70, 0.18);
 
   /* Gradients */
-  --gradient: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
-  --gradient-2: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --gradient: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
+  --gradient-2: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
 
   /* Typography */
   --font-body: 'Inter', sans-serif;

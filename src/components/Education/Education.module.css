@@ -15,7 +15,7 @@
 .iconWrap {
   width: 36px; height: 36px;
   border-radius: 10px;
-  background: rgba(108,99,255,0.12);
+  background: rgba(230,57,70,0.1);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   color: var(--accent);
@@ -32,9 +32,9 @@
 .score {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 0.8rem; font-weight: 700;
-  color: #43e97b;
-  background: rgba(67,233,123,0.08);
-  border: 1px solid rgba(67,233,123,0.2);
+  color: #ff4d6d;
+  background: rgba(230, 57, 70,0.08);
+  border: 1px solid rgba(230, 57, 70,0.2);
   padding: 4px 10px; border-radius: 20px;
   margin-bottom: 10px;
 }
