@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileDown } from "lucide-react";
 import { navLinks, personalInfo } from "../../constants";
 import styles from "./Navbar.module.css";
 
-export default function Navbar() {
+export default function Navbar({ onCVOpen }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,9 +58,15 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <button className={styles.cvBtn} onClick={onCVOpen} aria-label="Download CV">
+            <FileDown size={15} />
+            <span>Download CV</span>
+          </button>
+          <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

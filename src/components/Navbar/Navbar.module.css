@@ -115,7 +115,36 @@
 .mobileLink:hover,
 .mobileLink.active { color: var(--accent); }
 
+.cvBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--gradient);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: var(--transition);
+  white-space: nowrap;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.cvBtn:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.4);
+}
+
 @media (max-width: 900px) {
   .links { display: none; }
   .menuBtn { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .cvBtn span { display: none; }
 }
