@@ -47,6 +47,7 @@ export const achievements = [
 ];
 
 export const certifications = [
+  { name: "Claude Certified Architect", issuer: "Anthropic Certified" },
   { name: "AWS Academy Graduate", issuer: "Amazon Web Services" },
   { name: "JavaScript Developer", issuer: "EPAM Systems" },
   { name: "Salesforce Developer Superbadges", issuer: "Salesforce" },

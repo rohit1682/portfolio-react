@@ -5,5 +5,6 @@ export { experience } from "./experience";
 export { education, volunteer } from "./education";
 export { projects } from "./projects";
 export { achievements, certifications } from "./achievements";
+export { certificates } from "./certificates";
 export { hobbies } from "./hobbies";
 export { navLinks } from "./navigation";
