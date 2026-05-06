@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { GraduationCap, MapPin, Users, Award } from "lucide-react";
 import { education, volunteer } from "../../constants";
-import { staggerContainer, staggerItem, fadeLeft, fadeRight } from "../../hooks/animations";
+import { fadeLeft, fadeRight } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Education.module.css";
 

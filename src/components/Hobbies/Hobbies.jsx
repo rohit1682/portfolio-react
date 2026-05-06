@@ -3,8 +3,8 @@ import {
   Camera, Mic2, Code2, CircleDot, Zap, TrendingUp,
   Swords, Plane, BookOpen, Music, Dumbbell, Languages,
 } from "lucide-react";
-import { hobbies, personalInfo } from "../../constants";
-import { scaleIn, fadeUp } from "../../hooks/animations";
+import { hobbies } from "../../constants";
+import { scaleIn } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Hobbies.module.css";
 

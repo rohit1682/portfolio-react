@@ -75,6 +75,7 @@ function CertPreview({ cert }) {
   const [loaded, setLoaded] = useState(false);
   const fileUrl = encodeURI(cert.file);
   const thumbUrl = cert.thumb ? encodeURI(cert.thumb) : null;
+  const webpUrl = thumbUrl ? thumbUrl.replace(/\.png$/i, ".webp") : null;
 
   useEffect(() => {
     const el = ref.current;
@@ -91,17 +92,21 @@ function CertPreview({ cert }) {
       {!loaded && <div className={styles.skeleton} />}
 
       {visible && cert.type === "image" && (
-        <img src={fileUrl} alt={cert.title} loading="lazy" onLoad={() => setLoaded(true)} />
+        <img src={fileUrl} alt={cert.title} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} />
       )}
 
       {visible && cert.type === "pdf" && thumbUrl && (
-        <img
-          src={thumbUrl}
-          alt={cert.title}
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
-          onError={(e) => { e.currentTarget.style.display = "none"; setLoaded(true); }}
-        />
+        <picture>
+          {webpUrl && <source srcSet={webpUrl} type="image/webp" />}
+          <img
+            src={thumbUrl}
+            alt={cert.title}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={(e) => { e.currentTarget.style.display = "none"; setLoaded(true); }}
+          />
+        </picture>
       )}
 
       {visible && cert.type === "pdf" && !thumbUrl && (

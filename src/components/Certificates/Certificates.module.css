@@ -114,12 +114,14 @@
   border-bottom: 1px solid var(--border);
 }
 .preview img,
-.preview .pdfFrame {
+.preview .pdfFrame,
+.preview picture {
   width: 100%; height: 100%;
   display: block; border: 0;
   pointer-events: none;
   background: #fff;
 }
+.preview picture img { width: 100%; height: 100%; }
 /* Cover-crop fills the 4:3 frame — thumbnails are pre-cropped by
    scripts/gen_cert_thumbs.py, raw images get the same treatment. */
 .preview img { object-fit: cover; object-position: center top; }

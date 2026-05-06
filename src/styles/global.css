@@ -39,3 +39,51 @@ img {
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* ── Accessibility ── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  z-index: 10000;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; outline: 2px solid #fff; outline-offset: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Reduced motion: blanket safety net ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Print stylesheet — clean one-pager ── */
+@media print {
+  :root { color-scheme: light; }
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  nav, .skip-link, [data-no-print], button, .btn-primary, .btn-outline { display: none !important; }
+  .section-bg, .section-wrapper { background: #fff !important; padding: 12px 0 !important; }
+  h1, h2, h3, h4 { color: #111 !important; page-break-after: avoid; }
+  a { color: #b91c2e !important; text-decoration: underline; }
+  .card { box-shadow: none !important; border: 1px solid #ddd !important; background: #fff !important; }
+  img { max-width: 60mm !important; }
+  section { page-break-inside: avoid; }
+}

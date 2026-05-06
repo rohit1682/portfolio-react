@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Briefcase, MapPin, Calendar, CheckCircle2 } from "lucide-react";
 import { experience } from "../../constants";
-import { staggerContainer, staggerItem, fadeLeft } from "../../hooks/animations";
+import { fadeLeft } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Experience.module.css";
 

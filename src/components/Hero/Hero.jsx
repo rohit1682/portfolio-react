@@ -13,7 +13,7 @@ export default function Hero() {
     const roles = personalInfo.typedRoles;
     let timer;
     const type = () => {
-      const { index, char, deleting } = stateRef.current;
+      const { index, deleting } = stateRef.current;
       const current = roles[index];
       if (!deleting) {
         stateRef.current.char++;

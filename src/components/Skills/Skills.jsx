@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { skillCategories, skillTags } from "../../constants";
-import { staggerContainer, staggerItem, fadeLeft } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Skills.module.css";
 

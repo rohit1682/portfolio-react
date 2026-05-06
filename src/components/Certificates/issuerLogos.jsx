@@ -8,9 +8,10 @@ const wrap = (path, label) => (
     width="16"
     height="16"
     fill="currentColor"
-    role="img"
     aria-label={label}
+    focusable="false"
   >
+    <title>{label}</title>
     {path}
   </svg>
 );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, FileDown } from "lucide-react";
+import { Menu, X, FileDown, Command } from "lucide-react";
 import { navLinks, personalInfo } from "../../constants";
 import styles from "./Navbar.module.css";
 
@@ -8,6 +8,11 @@ export default function Navbar({ onCVOpen }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
+  // Initialize synchronously so we don't trigger a setState inside an effect.
+  const [isMac] = useState(() =>
+    typeof navigator !== "undefined" &&
+    /Mac|iPhone|iPad|iPod/.test(navigator.userAgent || navigator.platform || "")
+  );
 
   useEffect(() => {
     const onScroll = () => {
@@ -29,6 +34,11 @@ export default function Navbar({ onCVOpen }) {
     setMenuOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Programmatically open the command palette via the same hotkey it listens to
+  const openPalette = () => {
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true }));
   };
 
   const initials = personalInfo.name.split(" ").map((w) => w[0]).join("");
@@ -59,6 +69,15 @@ export default function Navbar({ onCVOpen }) {
         </ul>
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <button
+            className={styles.cmdkBtn}
+            onClick={openPalette}
+            aria-label="Open command palette"
+            title="Quick search (⌘K)"
+          >
+            <Command size={13} />
+            <span className={styles.cmdkLabel}>{isMac ? "⌘" : "Ctrl"} K</span>
+          </button>
           <button className={styles.cvBtn} onClick={onCVOpen} aria-label="Download CV">
             <FileDown size={15} />
             <span>Download CV</span>

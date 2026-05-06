@@ -168,6 +168,44 @@
 
 .statLabel { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
 
+/* GitHub contributions */
+.calendarCard {
+  margin-top: 32px;
+  padding: 28px;
+}
+.calendarHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.calendarTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.calendarTitle svg { color: var(--accent-2); }
+.calendarLink {
+  font-size: 0.78rem;
+  color: var(--accent-2);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+}
+.calendarLink:hover { text-decoration: underline; }
+.calendarWrap {
+  overflow-x: auto;
+  padding-bottom: 4px;
+  color: var(--text-secondary);
+}
+.calendarWrap :global(text) { fill: var(--text-secondary) !important; }
+
 @media (max-width: 1000px) {
   .grid { grid-template-columns: 1fr; gap: 48px; }
   .photoSide { order: -1; }

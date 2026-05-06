@@ -1,9 +1,11 @@
-"""Generate 4:3 PNG thumbnails for every PDF in public/assets/certificates.
+"""Generate 4:3 thumbnails (WebP + PNG fallback) for every PDF in
+public/assets/certificates.
 
 Strategy: render the first page at high DPI, then *cover-crop* (scale so the
 shorter side matches and crop excess from the long side, top-biased) so the
 content fills the 4:3 frame without letterbox / zoomed-out look.
-Salesforce-style portrait PDFs no longer appear tiny.
+We emit both a `.webp` (modern, ~70% smaller) and a `.png` fallback so the
+React side can use `<picture>` with `<source type="image/webp">`.
 """
 import os
 import fitz  # PyMuPDF
@@ -45,7 +47,9 @@ def cover_crop(img: Image.Image, tw: int, th: int, top_bias: float = 0.25) -> Im
 for fname in sorted(os.listdir(SRC)):
     if not fname.lower().endswith(".pdf"):
         continue
-    out = os.path.join(DST, os.path.splitext(fname)[0] + ".png")
+    base = os.path.splitext(fname)[0]
+    out_png = os.path.join(DST, base + ".png")
+    out_webp = os.path.join(DST, base + ".webp")
     try:
         doc = fitz.open(os.path.join(SRC, fname))
         page = doc.load_page(0)
@@ -54,9 +58,11 @@ for fname in sorted(os.listdir(SRC)):
         pix = page.get_pixmap(matrix=mat, alpha=False)
         img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
         thumb = cover_crop(img, TARGET_W, TARGET_H, top_bias=0.2)
-        thumb.save(out, "PNG", optimize=True)
+        thumb.save(out_png, "PNG", optimize=True)
+        thumb.save(out_webp, "WEBP", quality=82, method=6)
         doc.close()
-        print(f"OK  {fname}")
+        print(f"OK  {fname}  ({os.path.getsize(out_webp) // 1024}KB webp / "
+              f"{os.path.getsize(out_png) // 1024}KB png)")
     except Exception as e:
         print(f"ERR {fname}: {e}")
 

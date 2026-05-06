@@ -28,7 +28,7 @@ export default function Achievements() {
             const Icon = iconMap[item.icon];
             return (
               <motion.div
-                key={i}
+                key={item.title}
                 className={`card ${styles.achieveCard} ${item.highlight ? styles.highlight : ""}`}
                 variants={scaleIn}
                 custom={i * 0.06}

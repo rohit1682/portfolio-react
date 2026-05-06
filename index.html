@@ -3,13 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Rohit Ghosh — Software Engineer & Full Stack Developer Portfolio" />
-    <title>Rohit Ghosh | Portfolio</title>
+    <meta name="theme-color" content="#b91c2e" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>Rohit Ghosh — Full-Stack Developer & GenAI Builder</title>
+    <meta name="description" content="Portfolio of Rohit Ghosh — Junior Software Developer at EPAM. Full-stack engineer (React, Node, Java) with hands-on GenAI, prompt-engineering and Anthropic Claude experience. Patent holder, Enactus National Cup winner." />
+    <meta name="author" content="Rohit Ghosh" />
+    <meta name="keywords" content="Rohit Ghosh, Full Stack Developer, React, Node.js, Java, EPAM, GenAI, Prompt Engineering, Anthropic, Claude, Portfolio, Software Engineer, Kolkata" />
+    <link rel="canonical" href="https://rohit1682.github.io/portfolio-react/" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rohit Ghosh — Portfolio" />
+    <meta property="og:title" content="Rohit Ghosh — Full-Stack Developer & GenAI Builder" />
+    <meta property="og:description" content="Full-stack engineer (React, Node, Java) with hands-on GenAI, prompt-engineering and Anthropic Claude Architect credentials." />
+    <meta property="og:url" content="https://rohit1682.github.io/portfolio-react/" />
+    <meta property="og:image" content="https://rohit1682.github.io/portfolio-react/assets/images/profile.jpg" />
+    <meta property="og:image:alt" content="Rohit Ghosh portrait" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rohit Ghosh — Full-Stack Developer & GenAI Builder" />
+    <meta name="twitter:description" content="Full-stack engineer with GenAI, prompt-engineering and Anthropic Claude Architect credentials." />
+    <meta name="twitter:image" content="https://rohit1682.github.io/portfolio-react/assets/images/profile.jpg" />
+
+    <!-- Performance hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/assets/images/profile.jpg" fetchpriority="high" />
+
+    <!-- Structured data: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rohit Ghosh",
+        "jobTitle": "Junior Software Developer",
+        "worksFor": { "@type": "Organization", "name": "EPAM Systems" },
+        "url": "https://rohit1682.github.io/portfolio-react/",
+        "image": "https://rohit1682.github.io/portfolio-react/assets/images/profile.jpg",
+        "email": "mailto:rht.ghs10@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kolkata",
+          "addressRegion": "West Bengal",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://github.com/rohit1682",
+          "https://www.linkedin.com/in/rohit-ghosh-b7b5201a6/",
+          "https://leetcode.com/u/rohitG33/"
+        ],
+        "knowsAbout": [
+          "React", "Node.js", "Java", "MongoDB", "AWS",
+          "Generative AI", "Prompt Engineering", "Anthropic Claude"
+        ]
+      }
+    </script>
+
+    <!-- Avoid FOUC for users who prefer reduced motion -->
+    <style>
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto !important; }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
   </head>
   <body>
+    <a href="#hero" class="skip-link">Skip to content</a>
     <div id="root"></div>
+    <noscript>
+      <p style="text-align:center;padding:32px;font-family:sans-serif;color:#fff;background:#080608">
+        This portfolio requires JavaScript to render. Source on
+        <a href="https://github.com/rohit1682" style="color:#e85d75">GitHub</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,17 +1,41 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Copy } from "lucide-react";
 import { personalInfo } from "../../constants";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import { fadeLeft, fadeRight, staggerContainer, staggerItem } from "../../hooks/animations";
+import { fadeLeft, fadeRight } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import Toast from "../Toast/Toast";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
+  const [toast, setToast] = useState({ visible: false, message: "" });
+
+  const showToast = (message) => {
+    setToast({ visible: true, message });
+    setTimeout(() => setToast((t) => ({ ...t, visible: false })), 1800);
+  };
+
+  const copy = async (value, label) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      showToast(`${label} copied`);
+    } catch {
+      showToast("Copy failed — try manually");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const f = e.target;
     window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(f.subject.value)}&body=${encodeURIComponent(`Name: ${f.name.value}\n\n${f.message.value}`)}`;
   };
+
+  const detailItems = [
+    { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}`, copyable: true },
+    { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone}`, copyable: true },
+    { icon: MapPin, label: "Location", value: personalInfo.location, href: null, copyable: false },
+  ];
 
   return (
     <section id="contact" className="section-wrapper section-bg">
@@ -24,20 +48,27 @@ export default function Contact() {
             <p>I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you.</p>
 
             <div className={styles.details}>
-              {[
-                { icon: Mail, label: "Email", value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-                { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone}` },
-                { icon: MapPin, label: "Location", value: personalInfo.location, href: null },
-              ].map(({ icon: Icon, label, value, href }) => (
+              {detailItems.map(({ icon: Icon, label, value, href, copyable }) => (
                 <motion.div key={label} className={styles.detailItem} whileHover={{ x: 6 }}>
                   <div className={styles.detailIcon}><Icon size={17} /></div>
-                  <div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <span className={styles.detailLabel}>{label}</span>
                     {href
                       ? <a href={href} className={styles.detailValue}>{value}</a>
                       : <span className={styles.detailValue}>{value}</span>
                     }
                   </div>
+                  {copyable && (
+                    <button
+                      type="button"
+                      className={styles.copyBtn}
+                      onClick={() => copy(value, label)}
+                      aria-label={`Copy ${label.toLowerCase()}`}
+                      title={`Copy ${label.toLowerCase()}`}
+                    >
+                      <Copy size={14} />
+                    </button>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -70,6 +101,8 @@ export default function Contact() {
           </motion.form>
         </div>
       </div>
+
+      <Toast message={toast.message} visible={toast.visible} />
     </section>
   );
 }
