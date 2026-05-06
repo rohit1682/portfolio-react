@@ -25,6 +25,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+}
+
+/* Cluster wrapping the RG logo + the section links. It always claims the
+   remaining horizontal space so the logo can glide between flex-start and
+   center via justify-content alone — no layout snapshots / jumps. */
+.leftCluster {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+/* When section links are hidden, the logo is the only meaningful child
+   of the cluster — center it. The logo itself is a Framer Motion
+   `layout` element, so it will tween from its old left-aligned rect
+   to this new centered rect smoothly. */
+.leftClusterCentered {
+  justify-content: center;
+}
+
+.rightCluster {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -39,6 +67,36 @@
   letter-spacing: -1px;
   border: none;
   background-color: transparent;
+  padding: 4px 10px;
+  border-radius: 12px;
+  position: relative;
+  transition: filter 0.25s ease, text-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 50%, rgba(232, 93, 117, 0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 12px rgba(232, 93, 117, 0.45));
+}
+
+.logo:hover::before {
+  opacity: 1;
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
 }
 
 .logoDot {
@@ -49,7 +107,10 @@
 .links {
   display: flex;
   list-style: none;
-  gap: 4px;
+  gap: 0;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
