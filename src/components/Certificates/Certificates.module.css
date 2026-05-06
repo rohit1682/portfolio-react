@@ -120,7 +120,9 @@
   pointer-events: none;
   background: #fff;
 }
-.preview img { object-fit: contain; }
+/* Cover-crop fills the 4:3 frame — thumbnails are pre-cropped by
+   scripts/gen_cert_thumbs.py, raw images get the same treatment. */
+.preview img { object-fit: cover; object-position: center top; }
 .preview .pdfFrame { object-fit: cover; }
 
 .skeleton {

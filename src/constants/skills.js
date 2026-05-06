@@ -50,6 +50,17 @@ export const skillCategories = [
       { name: "LLM App Integration", level: 78 },
     ],
   },
+  {
+    category: "Languages & Soft Skills",
+    items: [
+      { name: "English (Fluent)", level: 95 },
+      { name: "Hindi (Native)", level: 100 },
+      { name: "Bengali (Native)", level: 100 },
+      { name: "German (Communicative)", level: 65 },
+      { name: "Communication & Public Speaking", level: 88 },
+      { name: "Leadership & Team Building", level: 85 },
+    ],
+  },
 ];
 
 export const skillTags = {

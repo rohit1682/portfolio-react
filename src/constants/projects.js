@@ -39,6 +39,26 @@ export const projects = [
     ],
   },
   {
+    id: 7,
+    title: "Interview Slot Booking API",
+    subtitle: "Production-Ready Hiring Backend",
+    description:
+      "A production-grade backend service that manages interview slots and candidate bookings with role-based access, conflict-safe scheduling, and MongoDB transactions to prevent overbooking under concurrency.",
+    tags: ["Node.js", "Express", "MongoDB", "Mongoose", "Joi", "Swagger / OpenAPI"],
+    github: "https://github.com/rohit1682/interview-app",
+    live: "#",
+    featured: true,
+    status: "Completed",
+    features: [
+      "Role-based auth (Admin / Candidate) with simulated x-user-id header",
+      "Slot overlap detection (partial, inside, covering)",
+      "Capacity-safe booking via MongoDB transactions (no race conditions)",
+      "Filtering, pagination & availability computed dynamically",
+      "Joi request validation with consistent error envelope",
+      "Full Swagger / OpenAPI 3.0 documentation at /docs",
+    ],
+  },
+  {
     id: 3,
     title: "ResuNova",
     subtitle: "AI Resume Builder",

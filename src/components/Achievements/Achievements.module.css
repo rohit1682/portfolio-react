@@ -1,19 +1,23 @@
-.grid {
+.note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: -8px auto 28px;
+  max-width: 640px;
+}
+.note a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+.note a:hover { color: var(--accent-2); }
+
+.achieveGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
-
-.colLabel {
-  font-size: 0.9rem; font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-
-/* Achievements */
-.achieveList { display: flex; flex-direction: column; gap: 12px; }
 
 .achieveCard {
   display: flex; align-items: center; gap: 14px;
@@ -50,23 +54,6 @@
 
 .highlightStar { font-size: 0.9rem; flex-shrink: 0; }
 
-/* Certifications */
-.certList { display: flex; flex-direction: column; gap: 10px; }
-
-.certCard {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 14px 18px;
-  cursor: default;
+@media (max-width: 768px) {
+  .achieveGrid { grid-template-columns: 1fr; gap: 12px; }
 }
-
-.certDot {
-  width: 8px; height: 8px; flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--gradient);
-  margin-top: 5px;
-}
-
-.certName { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
-.certIssuer { font-size: 0.78rem; color: var(--accent); font-weight: 500; }
-
-@media (max-width: 768px) { .grid { grid-template-columns: 1fr; gap: 32px; } }

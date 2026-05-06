@@ -6,11 +6,13 @@ const THUMB = `${BASE}/thumbs`;
 
 // Categories drive filter chips + accent color tinting
 export const certificateCategories = {
-  ai:    { label: "AI & GenAI",  color: "#a78bfa" },
-  cloud: { label: "Cloud",       color: "#f59e0b" },
-  dev:   { label: "Development", color: "#e85d75" },
-  lang:  { label: "Language",    color: "#60a5fa" },
-  award: { label: "Awards",      color: "#34d399" },
+  ai:       { label: "AI & GenAI",   color: "#a78bfa" },
+  cloud:    { label: "Cloud",        color: "#f59e0b" },
+  dev:      { label: "Development",  color: "#e85d75" },
+  data:     { label: "Data & Security", color: "#22d3ee" },
+  tools:    { label: "Tools",        color: "#f472b6" },
+  lang:     { label: "Language",     color: "#60a5fa" },
+  award:    { label: "Awards",       color: "#34d399" },
 };
 
 export const certificates = [
@@ -115,6 +117,45 @@ export const certificates = [
     file: `${BASE}/Salesforce.pdf`,
     thumb: `${THUMB}/Salesforce.png`,
     type: "pdf",
+  },
+  {
+    title: "Atlassian Confluence Fundamentals",
+    issuer: "Atlassian",
+    issuerKey: "atlassian",
+    category: "tools",
+    year: 2024,
+    file: `${BASE}/Confluence.pdf`,
+    thumb: `${THUMB}/Confluence.png`,
+    type: "pdf",
+  },
+  {
+    title: "Atlassian Jira Fundamentals",
+    issuer: "Atlassian",
+    issuerKey: "atlassian",
+    category: "tools",
+    year: 2024,
+    file: `${BASE}/Jira.pdf`,
+    thumb: `${THUMB}/Jira.png`,
+    type: "pdf",
+  },
+  {
+    title: "Cyber Security Essentials",
+    issuer: "Cisco / Coursera",
+    issuerKey: "cisco",
+    category: "data",
+    year: 2024,
+    file: `${BASE}/Cyber Security.pdf`,
+    thumb: `${THUMB}/Cyber Security.png`,
+    type: "pdf",
+  },
+  {
+    title: "Data Science Trainee Program",
+    issuer: "TechBrain",
+    issuerKey: "techbrain",
+    category: "data",
+    year: 2023,
+    file: `${BASE}/Data Science.jpg`,
+    type: "image",
   },
   {
     title: "Full Stack Development",

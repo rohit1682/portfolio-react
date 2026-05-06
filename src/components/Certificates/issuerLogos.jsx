@@ -66,6 +66,21 @@ const EPAM = wrap(
   "EPAM Systems"
 );
 
+const Atlassian = wrap(
+  <path d="M7.12 11.084a.515.515 0 0 0-.873.085L.058 23.5a.531.531 0 0 0 .476.768H9.15a.515.515 0 0 0 .473-.293c1.853-3.825.728-9.633-2.504-12.89zM11.564.27a.512.512 0 0 0-.464.292c-2.197 4.328-1.483 9.954 1.42 13.762l4.156 5.448a.531.531 0 0 0 .422.21h8.617a.531.531 0 0 0 .476-.768L11.95.557A.512.512 0 0 0 11.563.27z" />,
+  "Atlassian"
+);
+
+const Cisco = wrap(
+  <path d="M2.5 9v6h2v-6h-2zm4 1.5v3h2v-3h-2zm4-3v9h2v-9h-2zm4 1.5v6h2v-6h-2zm4 3v3h2v-3h-2zm4-1.5v6h2v-6h-2z" />,
+  "Cisco"
+);
+
+const TechBrain = wrap(
+  <path d="M12 2C7 2 3 6 3 11c0 3 1.5 5.5 4 7v3h2v-2.5c.5.1 1 .2 1.5.2v2.3h2v-2.3c.5 0 1-.1 1.5-.2V21h2v-3c2.5-1.5 4-4 4-7 0-5-4-9-9-9zm0 2c4 0 7 3 7 7s-3 7-7 7-7-3-7-7 3-7 7-7zm-3 5v2h2v3h2v-3h2V9H9z" />,
+  "TechBrain"
+);
+
 export const issuerLogo = {
   anthropic: Anthropic,
   aws: AWS,
@@ -77,6 +92,9 @@ export const issuerLogo = {
   vanderbilt: Vanderbilt,
   salesforce: Salesforce,
   webskitters: Webskitters,
+  atlassian: Atlassian,
+  cisco: Cisco,
+  techbrain: TechBrain,
 };
 
 export const fallbackLogo = wrap(
