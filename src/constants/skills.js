@@ -39,6 +39,17 @@ export const skillCategories = [
       { name: "VS Code", level: 95 },
     ],
   },
+  {
+    category: "AI & GenAI",
+    items: [
+      { name: "Prompt Engineering", level: 90 },
+      { name: "Claude (Anthropic)", level: 88 },
+      { name: "ChatGPT / GPT APIs", level: 86 },
+      { name: "GitHub Copilot", level: 88 },
+      { name: "Generative AI Fundamentals", level: 82 },
+      { name: "LLM App Integration", level: 78 },
+    ],
+  },
 ];
 
 export const skillTags = {
@@ -48,6 +59,20 @@ export const skillTags = {
   "Cloud & DevOps": ["AWS S3", "AWS DynamoDB", "Ubuntu", "VirtualBox VM"],
   "Testing & Tools": ["JEST", "Postman", "MongoDB Compass", "Botpress", "GitHub", "VS Code"],
   "Methodologies": ["Agile", "Scrum", "JIRA", "OOP", "Design Patterns"],
+  "AI & GenAI": [
+    "Prompt Engineering",
+    "Claude (Anthropic)",
+    "Claude Architect",
+    "ChatGPT",
+    "GPT-4 / GPT APIs",
+    "GitHub Copilot",
+    "Generative AI",
+    "LLM Integration",
+    "RAG Basics",
+    "AI Agents",
+    "MCP (Model Context Protocol)",
+    "AI-Assisted Development",
+  ],
   "Secondary Languages": ["C", "C++", "Python"],
   "Documentation": ["MS Excel", "MS PowerPoint", "Google Docs", "Google Sheets", "Google Slides"],
   "Soft Skills": ["Problem Solving", "Communication", "Planning & Organizing", "Adaptability", "Team Building", "Event Management"],
