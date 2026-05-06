@@ -31,13 +31,27 @@ export const volunteer = [
     organization: "Enactus KIIT-KISS",
     location: "Bhubaneswar, Odisha, India",
     period: "Oct 2022 – Feb 2024",
-    description: "Managed 50+ members, led Project ENCUBE, and reached Enactus National Exposition Top 19.",
+    description:
+      "Led a 50+ member team driving entrepreneurial social-impact projects under the global Enactus network, owning end-to-end project delivery from ideation to field execution.",
+    highlights: [
+      "Spearheaded Project ENCUBE — a sustainable livelihood initiative for underserved communities.",
+      "Reached the Top 19 at the Enactus National Exposition out of 200+ participating universities.",
+      "Coordinated cross-functional squads across operations, design, finance and outreach.",
+      "Mentored juniors on stakeholder communication, pitching, and impact measurement.",
+    ],
   },
   {
     role: "President",
     organization: "Debating and MUN Society",
     location: "Kolkata, West Bengal, India",
     period: "Apr 2019 – Jun 2021",
-    description: "Managed 70+ members, organized debates & MUNs, participated in 13+ Model United Nations conferences.",
+    description:
+      "Headed the school's flagship public-speaking society, scaling membership and elevating its presence on the inter-school debating and Model UN circuit.",
+    highlights: [
+      "Managed a 70+ member society across debating, MUN, and parliamentary tracks.",
+      "Organised inter-school debates, intra-society MUNs and weekly training workshops.",
+      "Represented the institution at 13+ Model United Nations conferences as delegate / chair.",
+      "Built a peer-mentorship pipeline that onboarded juniors into competitive circuits.",
+    ],
   },
 ];

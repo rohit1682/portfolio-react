@@ -71,7 +71,7 @@ export default function Projects() {
             {shown.map((project, i) => {
               const sc = statusColors[project.status] || statusColors["Completed"];
               return (
-                <motion.div key={project.id} variants={scaleIn} custom={i * 0.08} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+                <motion.div key={project.id} className={styles.cardWrap} variants={scaleIn} custom={i * 0.08} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
                   <TiltCard className={`card ${styles.card} ${project.featured ? styles.featured : ""}`} featured={project.featured}>
                     {project.featured && <div className={styles.featuredBadge}><Star size={11} fill="currentColor" /> Featured</div>}
                     <div className={styles.cardTop}>

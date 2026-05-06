@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, Users, Award } from "lucide-react";
+import { GraduationCap, MapPin, Users, Award, CheckCircle2 } from "lucide-react";
 import { education, volunteer } from "../../constants";
 import { fadeLeft, fadeRight } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
@@ -8,7 +8,7 @@ import styles from "./Education.module.css";
 function EduCard({ item, i, isVolunteer, side }) {
   const variant = side === "left" ? fadeLeft : fadeRight;
   return (
-    <motion.div className={`card ${styles.card}`} variants={variant} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+    <motion.div className={`card ${styles.card} ${isVolunteer ? styles.volunteerCard : ""}`} variants={variant} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
       <div className={styles.cardTop}>
         <div className={styles.iconWrap}>{isVolunteer ? <Users size={18} /> : <GraduationCap size={18} />}</div>
         <span className="tag">{item.period}</span>
@@ -20,6 +20,16 @@ function EduCard({ item, i, isVolunteer, side }) {
         <div className={styles.score}><Award size={13} />{item.score}</div>
       )}
       {item.description && <p className={styles.desc}>{item.description}</p>}
+      {item.highlights && item.highlights.length > 0 && (
+        <ul className={styles.highlights}>
+          {item.highlights.map((h) => (
+            <li key={h}>
+              <CheckCircle2 size={13} className={styles.checkIcon} />
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </motion.div>
   );
 }

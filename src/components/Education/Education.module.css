@@ -41,4 +41,31 @@
 
 .desc { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6; }
 
+/* Volunteer cards carry richer content so 2 of them roughly equal
+   the height of the 3 academic cards on the opposite column. */
+.volunteerCard { padding: 28px; margin-bottom: 28px; }
+.volunteerCard .desc { margin-bottom: 14px; }
+
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.checkIcon {
+  color: #34d399;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 @media (max-width: 768px) { .grid { grid-template-columns: 1fr; gap: 28px; } }
