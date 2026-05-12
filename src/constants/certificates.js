@@ -17,6 +17,17 @@ export const certificateCategories = {
 
 export const certificates = [
   {
+    title: "Generative AI & Machine Learning",
+    issuer: "E & ICT Academy, IIT Kanpur",
+    issuerKey: "iitkanpur",
+    category: "ai",
+    year: 2025,
+    file: `${BASE}/Certificate - E&ICT Academy, IIT Kanpur.pdf`,
+    thumb: `${THUMB}/Certificate - E&ICT Academy, IIT Kanpur.png`,
+    type: "pdf",
+    featured: true,
+  },
+  {
     title: "Anthropic Claude Architect",
     issuer: "Anthropic",
     issuerKey: "anthropic",

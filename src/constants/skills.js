@@ -3,13 +3,16 @@ export const skillCategories = [
     category: "Primary — Languages",
     items: [
       { name: "JavaScript", level: 92 },
+      { name: "TypeScript", level: 80 },
       { name: "Java", level: 88 },
+      { name: "Python", level: 78 },
     ],
   },
   {
     category: "Frontend",
     items: [
       { name: "React.js", level: 88 },
+      { name: "Next.js", level: 75 },
       { name: "Angular", level: 72 },
       { name: "HTML / Custom CSS", level: 95 },
       { name: "Tailwind CSS", level: 85 },
@@ -26,6 +29,7 @@ export const skillCategories = [
       { name: "PHP / PL-SQL", level: 75 },
       { name: "Django REST API", level: 72 },
       { name: "MySQL", level: 82 },
+      { name: "REST APIs", level: 88 },
     ],
   },
   {
@@ -36,6 +40,7 @@ export const skillCategories = [
       { name: "JEST Unit Testing", level: 78 },
       { name: "Postman", level: 85 },
       { name: "AWS (S3, DynamoDB)", level: 70 },
+      { name: "Docker", level: 68 },
       { name: "VS Code", level: 95 },
     ],
   },
@@ -46,8 +51,10 @@ export const skillCategories = [
       { name: "Claude (Anthropic)", level: 88 },
       { name: "ChatGPT / GPT APIs", level: 86 },
       { name: "GitHub Copilot", level: 88 },
-      { name: "Generative AI Fundamentals", level: 82 },
-      { name: "LLM App Integration", level: 78 },
+      { name: "Generative AI Fundamentals", level: 85 },
+      { name: "Machine Learning", level: 78 },
+      { name: "LLM App Integration", level: 80 },
+      { name: "AI-Driven Problem Solving", level: 82 },
     ],
   },
   {
@@ -64,10 +71,10 @@ export const skillCategories = [
 ];
 
 export const skillTags = {
-  "Primary Languages": ["JavaScript", "Java"],
-  "Frontend": ["React.js", "Angular", "HTML5", "Custom CSS", "Tailwind CSS", "Bootstrap", "Figma", "SEO Optimization"],
-  "Backend": ["Node.js", "Express.js", "MongoDB", "PHP", "PL/SQL", "Django REST API"],
-  "Cloud & DevOps": ["AWS S3", "AWS DynamoDB", "Ubuntu", "VirtualBox VM"],
+  "Primary Languages": ["JavaScript", "TypeScript", "Java", "Python"],
+  "Frontend": ["React.js", "Next.js", "Angular", "HTML5", "Custom CSS", "Tailwind CSS", "Bootstrap", "Figma", "SEO Optimization"],
+  "Backend": ["Node.js", "Express.js", "MongoDB", "PHP", "PL/SQL", "Django REST API", "REST APIs"],
+  "Cloud & DevOps": ["AWS S3", "AWS DynamoDB", "Docker", "Ubuntu", "VirtualBox VM"],
   "Testing & Tools": ["JEST", "Postman", "MongoDB Compass", "Botpress", "GitHub", "VS Code"],
   "Methodologies": ["Agile", "Scrum", "JIRA", "OOP", "Design Patterns"],
   "AI & GenAI": [
@@ -78,13 +85,15 @@ export const skillTags = {
     "GPT-4 / GPT APIs",
     "GitHub Copilot",
     "Generative AI",
+    "Machine Learning",
+    "AI-Driven Problem Solving",
     "LLM Integration",
     "RAG Basics",
     "AI Agents",
     "MCP (Model Context Protocol)",
     "AI-Assisted Development",
   ],
-  "Secondary Languages": ["C", "C++", "Python"],
+  "Secondary Languages": ["C", "C++"],
   "Documentation": ["MS Excel", "MS PowerPoint", "Google Docs", "Google Sheets", "Google Slides"],
   "Soft Skills": ["Problem Solving", "Communication", "Planning & Organizing", "Adaptability", "Team Building", "Event Management"],
 };
