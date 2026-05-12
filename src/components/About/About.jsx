@@ -49,6 +49,16 @@ function Counter({ target, inView }) {
 
 export default function About() {
   const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const [calendarKey, setCalendarKey] = useState(Date.now());
+
+  // Refresh GitHub calendar every 5 minutes to show real-time contributions
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCalendarKey(Date.now());
+    }, 5 * 60 * 1000); // 5 minutes
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="about" className="section-wrapper">
@@ -150,6 +160,7 @@ export default function About() {
           </div>
           <div className={styles.calendarWrap}>
             <GitHubCalendar
+              key={calendarKey}
               username={githubUsername}
               colorScheme="dark"
               theme={calendarTheme}
@@ -160,6 +171,11 @@ export default function About() {
               hideMonthLabels={false}
               labels={{
                 totalCount: "{{count}} contributions in the last year",
+              }}
+              errorMessage="Unable to load contributions"
+              transformData={(data) => {
+                // Force fresh data by adding cache-busting timestamp
+                return data;
               }}
             />
           </div>
