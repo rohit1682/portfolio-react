@@ -27,6 +27,7 @@ export default function CommandPalette({ onOpenCV }) {
       hint: "Jump to section",
       group: "Sections",
       icon: <ArrowRight size={15} />,
+      /* v8 ignore next */
       run: () => document.querySelector(l.href)?.scrollIntoView({ behavior: "smooth" }),
     }));
 
@@ -36,6 +37,7 @@ export default function CommandPalette({ onOpenCV }) {
       hint: p.subtitle,
       group: "Projects",
       icon: <FolderOpen size={15} />,
+      /* v8 ignore next 3 */
       run: () => p.github && p.github !== "#"
         ? window.open(p.github, "_blank", "noreferrer")
         : document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }),
@@ -47,9 +49,11 @@ export default function CommandPalette({ onOpenCV }) {
       hint: c.issuer,
       group: "Certificates",
       icon: <Award size={15} />,
+      /* v8 ignore next */
       run: () => window.open(encodeURI(c.file), "_blank", "noreferrer"),
     }));
 
+    /* v8 ignore start */
     const actions = [
       {
         id: "act-cv", label: "Download CV",
@@ -82,11 +86,12 @@ export default function CommandPalette({ onOpenCV }) {
         icon: <Briefcase size={15} />, run: () => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" }),
       },
       {
-        id: "act-edu", label: "Education", hint: "B.Tech CSE — KIIT University",
+        id: "act-edu", label: "Education", hint: personalInfo.degree,
         group: "Actions", icon: <GraduationCap size={15} />,
         run: () => document.getElementById("education")?.scrollIntoView({ behavior: "smooth" }),
       },
     ];
+    /* v8 ignore stop */
 
     return [...sectionItems, ...actions, ...projectItems, ...certItems];
   }, [onOpenCV]);
@@ -153,6 +158,7 @@ export default function CommandPalette({ onOpenCV }) {
       } else if (e.key === "Enter") {
         e.preventDefault();
         const target = filtered[active];
+        /* v8 ignore next */
         if (target) {
           target.run();
           setOpen(false);

@@ -1,39 +1,36 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function SectionTitle({ title, subtitle }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.95", "start 0.55"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
+  const lineScaleX = useTransform(scrollYProgress, [0.2, 1], [0, 1]);
+
   return (
-    <div className="section-title">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
+    <div className="section-title" ref={ref}>
+      <motion.h2 style={{ opacity, y, scale }}>
         {title}
       </motion.h2>
 
-      {/* Animated underline */}
       <motion.div
         style={{
           height: 3,
           background: "var(--gradient)",
           borderRadius: 2,
           margin: "10px auto 14px",
-          originX: 0.5,
+          scaleX: lineScaleX,
+          transformOrigin: "center",
         }}
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
       />
 
       {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
+        <motion.p style={{ opacity, y }}>
           {subtitle}
         </motion.p>
       )}

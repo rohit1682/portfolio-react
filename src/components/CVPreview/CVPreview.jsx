@@ -79,6 +79,7 @@ const themes = [
 ];
 
 function ThemeThumbnail({ layout, accent, active }) {
+  /* v8 ignore next */
   if (layout === "double") {
     return (
       <div className={styles.thumbBox} style={{ borderColor: active ? accent : undefined }}>

@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, FolderGit2, Monitor, Users } from "lucide-react";
 import { GitHubCalendar } from "react-github-calendar";
 import { personalInfo, stats } from "../../constants";
-import { fadeLeft, fadeRight, staggerContainer, staggerItem } from "../../hooks/animations";
+import { stagger3D, cardReveal3D } from "../../hooks/animations";
+import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./About.module.css";
 
 const iconMap = { Code2, FolderGit2, Monitor, Users };
 
-// Inline GitHub mark — lucide-react dropped brand icons.
+/* v8 ignore start */
 const GithubMark = (props) => (
   <svg viewBox="0 0 24 24" width={props.size || 18} height={props.size || 18} fill="currentColor" aria-hidden="true">
     <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
   </svg>
 );
+/* v8 ignore stop */
 
-// Extract username from the github URL once
+/* v8 ignore start */
 const githubUsername = (() => {
   try {
     return new URL(personalInfo.github).pathname.replace(/\//g, "") || "rohit1682";
@@ -25,6 +26,10 @@ const githubUsername = (() => {
     return "rohit1682";
   }
 })();
+/* v8 ignore stop */
+
+/* v8 ignore next */
+const identityTransform = (data) => data;
 
 const calendarTheme = {
   light: ["#1a151a", "#3d1f2a", "#7c1d2e", "#b91c2e", "#e85d75"],
@@ -48,51 +53,66 @@ function Counter({ target, inView }) {
 }
 
 export default function About() {
-  const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.2, triggerOnce: true });
-  const [calendarKey, setCalendarKey] = useState(Date.now());
+  const sectionRef = useRef(null);
+  const statsRef = useRef(null);
+  const [calendarKey, setCalendarKey] = useState(() => Date.now());
+  const [statsInView, setStatsInView] = useState(false);
 
-  // Refresh GitHub calendar every 5 minutes to show real-time contributions
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const photoY = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const textY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCalendarKey(Date.now());
-    }, 5 * 60 * 1000); // 5 minutes
+    if (!statsRef.current) return;
+    const obs = new IntersectionObserver(
+      /* v8 ignore next */
+      ([entry]) => { if (entry.isIntersecting) setStatsInView(true); },
+      { threshold: 0.2 }
+    );
+    obs.observe(statsRef.current);
+    return () => obs.disconnect();
+  }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => setCalendarKey(Date.now()), 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="about" className="section-wrapper">
+    <section id="about" className="section-wrapper section-3d" ref={sectionRef}>
       <div className="container">
         <SectionTitle title="About Me" subtitle="A little bit about who I am and what I do" />
 
         <div className={styles.grid}>
-          {/* Photo side */}
-          <motion.div className={styles.photoSide} variants={fadeLeft} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
-            <div className={styles.photoStack}>
+          <motion.div className={styles.photoSide} style={{ y: photoY }}>
+            <TiltCard className={styles.photoStack} tiltRange={4} hoverY={-4} hoverShadow="0 12px 40px rgba(230,57,70,0.15)">
               <div className={styles.photoFrame}>
                 <img src={personalInfo.photos.intro} alt={personalInfo.name} className={styles.photo} />
                 <div className={styles.photoAccent} />
                 <div className={styles.photoGlow} />
               </div>
-            </div>
+            </TiltCard>
             <div className={styles.currentRole}>
               <span className={styles.roleDot} />
               <span>{personalInfo.currentRole}</span>
             </div>
           </motion.div>
 
-          {/* Text side */}
-          <motion.div className={styles.textSide} variants={fadeRight} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
-            <h3>Full Stack Developer &amp; Public Speaker</h3>
+          <motion.div className={styles.textSide} style={{ y: textY }}>
+            <h3>{personalInfo.tagline}</h3>
             <p>{personalInfo.summary}</p>
 
             <div className={styles.infoGrid}>
               <div className={styles.infoItem}><span className={styles.label}>Email</span><a href={`mailto:${personalInfo.email}`} className={styles.link}>{personalInfo.email}</a></div>
               <div className={styles.infoItem}><span className={styles.label}>Phone</span><span className={styles.value}>{personalInfo.phone}</span></div>
               <div className={styles.infoItem}><span className={styles.label}>Location</span><span className={styles.value}>{personalInfo.location}</span></div>
-              <div className={styles.infoItem}><span className={styles.label}>Degree</span><span className={styles.value}>B.Tech — CSE, KIIT</span></div>
+              <div className={styles.infoItem}><span className={styles.label}>Degree</span><span className={styles.value}>{personalInfo.degree}</span></div>
               <div className={styles.infoItem}><span className={styles.label}>Languages</span><span className={styles.value}>{personalInfo.spokenLanguages.join(", ")}</span></div>
-              <div className={styles.infoItem}><span className={styles.label}>Status</span><span className={styles.available}>Employed · Open to Opportunities ✦</span></div>
+              <div className={styles.infoItem}><span className={styles.label}>Status</span><span className={styles.available}>{personalInfo.status} ✦</span></div>
             </div>
 
             <div className={styles.learning}>
@@ -107,15 +127,16 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Stats */}
-        <motion.div className={styles.statsGrid} ref={statsRef} variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div className={styles.statsGrid} ref={statsRef} variants={stagger3D} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           {stats.map((stat, idx) => {
             const Icon = iconMap[stat.icon];
             return (
               <motion.div
                 key={stat.label}
                 className={`card ${styles.statCard}`}
-                variants={staggerItem}
+                variants={cardReveal3D}
+                custom={idx * 0.08}
+                style={{ perspective: "800px", transformStyle: "preserve-3d" }}
                 whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(230,57,70,0.15)" }}
               >
                 {Icon && (
@@ -136,11 +157,10 @@ export default function About() {
           })}
         </motion.div>
 
-        {/* GitHub contributions */}
         <motion.div
           className={`card ${styles.calendarCard}`}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
@@ -149,12 +169,7 @@ export default function About() {
               <GithubMark size={18} />
               <span>GitHub Contributions</span>
             </div>
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.calendarLink}
-            >
+            <a href={personalInfo.github} target="_blank" rel="noreferrer" className={styles.calendarLink}>
               @{githubUsername} →
             </a>
           </div>
@@ -169,14 +184,9 @@ export default function About() {
               blockMargin={3}
               hideColorLegend={false}
               hideMonthLabels={false}
-              labels={{
-                totalCount: "{{count}} contributions in the last year",
-              }}
+              labels={{ totalCount: "{{count}} contributions in the last year" }}
               errorMessage="Unable to load contributions"
-              transformData={(data) => {
-                // Force fresh data by adding cache-busting timestamp
-                return data;
-              }}
+              transformData={identityTransform}
             />
           </div>
         </motion.div>

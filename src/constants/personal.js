@@ -30,4 +30,11 @@ export const personalInfo = {
   spokenLanguages: ["English", "German (basic), Hindi (native), Bengali (native)"],
   interests: ["Photography", "Finance", "Cricket", "Badminton", "Martial Arts"],
   currentlyLearning: ["Angular", "Advanced Node.js", "AWS"],
+  tagline: "Full Stack Developer & Public Speaker",
+  degree: "B.Tech — CSE, KIIT",
+  status: "Employed · Open to Opportunities",
+  contactHeading: "Let's talk",
+  contactDescription:
+    "I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you.",
+  footerTagline: "Building things for the web.",
 };

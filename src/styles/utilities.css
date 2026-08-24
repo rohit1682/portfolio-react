@@ -51,7 +51,13 @@
   border-color: var(--border-hover);
   background: var(--bg-card-hover);
   box-shadow: 0 8px 32px var(--glow);
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(8px);
+}
+
+/* ── 3D Section ── */
+.section-3d {
+  perspective: var(--perspective-section);
+  transform-style: preserve-3d;
 }
 
 /* ── Tag ── */

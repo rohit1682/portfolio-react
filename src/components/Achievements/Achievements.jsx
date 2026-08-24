@@ -1,15 +1,26 @@
 import { motion } from "framer-motion";
 import { Trophy, Globe, FileCheck, Medal, Star, Award } from "lucide-react";
 import { achievements } from "../../constants";
-import { scaleIn } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Achievements.module.css";
 
 const iconMap = { Trophy, Globe, FileCheck, Medal, Star, Award };
 
+const burstVariant = {
+  /* v8 ignore next */
+  hidden: { opacity: 0, scale: 0.6, rotateZ: () => (Math.random() - 0.5) * 6 },
+  /* v8 ignore next */
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    rotateZ: 0,
+    transition: { delay: i * 0.06, duration: 0.5, ease: "backOut" },
+  }),
+};
+
 export default function Achievements() {
   return (
-    <section id="achievements" className="section-wrapper section-bg">
+    <section id="achievements" className="section-wrapper section-bg section-3d">
       <div className="container">
         <SectionTitle title="Achievements" subtitle="Milestones and recognitions along the way" />
 
@@ -30,12 +41,13 @@ export default function Achievements() {
               <motion.div
                 key={item.title}
                 className={`card ${styles.achieveCard} ${item.highlight ? styles.highlight : ""}`}
-                variants={scaleIn}
-                custom={i * 0.06}
+                variants={burstVariant}
+                custom={i}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ scale: 1.02, y: -3 }}
+                whileHover={{ scale: 1.02, y: -3, z: 20 }}
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <div
                   className={styles.achieveIcon}

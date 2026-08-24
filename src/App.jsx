@@ -1,4 +1,5 @@
 import { useState, lazy, Suspense } from "react";
+import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
@@ -21,7 +22,7 @@ export default function App() {
   const [cvOpen, setCvOpen] = useState(false);
 
   return (
-    <>
+    <SmoothScroll>
       <ScrollProgress />
       <Navbar onCVOpen={() => setCvOpen(true)} />
       <Hero />
@@ -41,6 +42,6 @@ export default function App() {
           <CVPreview onClose={() => setCvOpen(false)} />
         </Suspense>
       )}
-    </>
+    </SmoothScroll>
   );
 }

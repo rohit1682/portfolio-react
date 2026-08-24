@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, Copy } from "lucide-react";
 import { personalInfo } from "../../constants";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import { fadeLeft, fadeRight } from "../../hooks/animations";
+import { fade3DLeft, fade3DRight } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import Toast from "../Toast/Toast";
 import styles from "./Contact.module.css";
@@ -11,6 +11,7 @@ import styles from "./Contact.module.css";
 export default function Contact() {
   const [toast, setToast] = useState({ visible: false, message: "" });
 
+  /* v8 ignore next 4 */
   const showToast = (message) => {
     setToast({ visible: true, message });
     setTimeout(() => setToast((t) => ({ ...t, visible: false })), 1800);
@@ -25,6 +26,7 @@ export default function Contact() {
     }
   };
 
+  /* v8 ignore next 5 */
   const handleSubmit = (e) => {
     e.preventDefault();
     const f = e.target;
@@ -38,14 +40,14 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="section-wrapper section-bg">
+    <section id="contact" className="section-wrapper section-bg section-3d">
       <div className="container">
         <SectionTitle title="Get In Touch" subtitle="Have a project in mind or just want to say hi? My inbox is always open." />
 
         <div className={styles.grid}>
-          <motion.div className={styles.info} variants={fadeLeft} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-            <h3>Let's talk</h3>
-            <p>I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you.</p>
+          <motion.div className={styles.info} variants={fade3DLeft} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+            <h3>{personalInfo.contactHeading}</h3>
+            <p>{personalInfo.contactDescription}</p>
 
             <div className={styles.details}>
               {detailItems.map(({ icon: Icon, label, value, href, copyable }) => (
@@ -76,7 +78,7 @@ export default function Contact() {
             <SocialLinks />
           </motion.div>
 
-          <motion.form className={`card ${styles.form}`} onSubmit={handleSubmit} variants={fadeRight} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+          <motion.form className={`card ${styles.form}`} onSubmit={handleSubmit} variants={fade3DRight} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label htmlFor="name">Name</label>

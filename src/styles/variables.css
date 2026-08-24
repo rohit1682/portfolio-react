@@ -38,4 +38,8 @@
 
   /* Transitions */
   --transition: all 0.3s ease;
+
+  /* 3D */
+  --perspective-section: 1200px;
+  --z-hero-canvas: -1;
 }

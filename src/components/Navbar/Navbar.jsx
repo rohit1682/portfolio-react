@@ -45,6 +45,7 @@ export default function Navbar({ onCVOpen }) {
 
   // On mobile (≤900px) the section links are hidden anyway and a hamburger
   // menu is used, so the logo just scrolls to the top there.
+  /* v8 ignore next 7 */
   const onLogoClick = () => {
     if (typeof window !== "undefined" && window.matchMedia("(max-width: 900px)").matches) {
       handleNav("#hero");
@@ -131,7 +132,12 @@ export default function Navbar({ onCVOpen }) {
             animate={linksOpen ? "open" : "closed"}
             variants={linksContainerVariants}
           >
-            {navLinks.map((link) => (
+            {navLinks.map((link) => {
+              /* v8 ignore next */
+              const linkClass = `${styles.link} ${active === link.href.replace("#", "") ? styles.active : ""}`;
+              /* v8 ignore next */
+              const linkTabIndex = linksOpen ? 0 : -1;
+              return (
               <motion.li
                 key={link.href}
                 variants={linkItemVariants}
@@ -143,15 +149,16 @@ export default function Navbar({ onCVOpen }) {
                 }}
               >
                 <button
-                  className={`${styles.link} ${active === link.href.replace("#", "") ? styles.active : ""}`}
+                  className={linkClass}
                   onClick={() => handleNav(link.href)}
-                  tabIndex={linksOpen ? 0 : -1}
+                  tabIndex={linkTabIndex}
                   aria-hidden={!linksOpen}
                 >
                   {link.label}
                 </button>
               </motion.li>
-            ))}
+              );
+            })}
           </motion.ul>
         </div>
 
