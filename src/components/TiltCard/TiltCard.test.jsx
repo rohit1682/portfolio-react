@@ -31,4 +31,19 @@ describe("TiltCard", () => {
     fireEvent.mouseMove(container.firstChild, { clientX: 100, clientY: 100 });
     expect(screen.getByText("No tilt")).toBeInTheDocument();
   });
+
+  it("renders glow overlay by default", () => {
+    render(<TiltCard><span>Glow</span></TiltCard>);
+    expect(screen.getByTestId("tilt-glow")).toBeInTheDocument();
+  });
+
+  it("hides glow overlay when glow=false", () => {
+    render(<TiltCard glow={false}><span>No glow</span></TiltCard>);
+    expect(screen.queryByTestId("tilt-glow")).not.toBeInTheDocument();
+  });
+
+  it("hides glow overlay when disabled", () => {
+    render(<TiltCard disabled><span>Disabled</span></TiltCard>);
+    expect(screen.queryByTestId("tilt-glow")).not.toBeInTheDocument();
+  });
 });

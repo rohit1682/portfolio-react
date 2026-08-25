@@ -7,7 +7,7 @@ export const personalInfo = {
   currentRole: "Junior Software Developer @ EPAM Systems",
   experience: "3+ Years in Full Stack Development",
   summary:
-    "B.Tech Computer Science graduate with strong expertise in full stack development, problem solving, and software engineering. Experienced in building scalable applications using modern web technologies and cloud platforms. Demonstrates leadership, project management, and strong analytical abilities.",
+    "Full-stack developer who turns complex problems into clean, scalable solutions. From cloud-native backends to pixel-perfect frontends — I build software that works and looks good doing it.",
   github: "https://github.com/rohit1682",
   linkedin: "https://www.linkedin.com/in/rohit-ghosh-b7b5201a6/",
   leetcode: "https://leetcode.com/u/rohitG33/",
@@ -32,9 +32,32 @@ export const personalInfo = {
   currentlyLearning: ["Angular", "Advanced Node.js", "AWS"],
   tagline: "Full Stack Developer & Public Speaker",
   degree: "B.Tech — CSE, KIIT",
-  status: "Employed · Open to Opportunities",
-  contactHeading: "Let's talk",
+  status: "Open to Opportunities",
+
+  heroHeadline: "Code with",
+  heroHeadlineBold: "purpose.",
+  heroSubtext:
+    "Full-stack developer crafting scalable web applications with modern technologies and clean architecture.",
+
+  aboutIntro:
+    "I'm a full-stack developer who turns complex problems into clean, scalable solutions. From cloud-native backends to pixel-perfect frontends — I build software that works and looks good doing it.",
+  aboutTagline: "The developer behind the code.",
+  skillsTagline: "The tools behind the craft.",
+  experienceTagline: "Where I've shipped real code.",
+  educationTagline: "The foundation that started it all.",
+  projectsTagline: "Selected work & explorations.",
+  achievementsTagline: "Moments that shaped the journey.",
+  certificatesTagline: "Validated expertise. Continuous growth.",
+  hobbiesTagline: "Beyond the code.",
+
+  contactHeading: "Let's build something.",
   contactDescription:
-    "I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you.",
-  footerTagline: "Building things for the web.",
+    "Got a project in mind? Let's talk. I'm always open to new opportunities and interesting collaborations. I usually reply within a day.",
+  footerTagline: "Crafted with React, Three.js, and too much coffee.",
+
+  marqueeItems: [
+    "React", "Node.js", "TypeScript", "AWS", "Java", "Spring Boot",
+    "PostgreSQL", "MongoDB", "Docker", "Kubernetes", "GraphQL", "Redis",
+    "Three.js", "Next.js", "Vite", "Tailwind CSS",
+  ],
 };

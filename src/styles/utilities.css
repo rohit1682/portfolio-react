@@ -22,8 +22,8 @@
 }
 
 .section-title h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
+  font-size: var(--heading-lg);
+  font-weight: 800;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -39,19 +39,122 @@
 }
 
 /* ── Card ── */
+@property --card-glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .card {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
   transition: var(--transition);
+  overflow: hidden;
 }
 
 .card:hover {
   border-color: var(--border-hover);
   background: var(--bg-card-hover);
-  box-shadow: 0 8px 32px var(--glow);
-  transform: translateY(-4px) translateZ(8px);
+  box-shadow: 0 6px 24px var(--glow);
+}
+
+/* ── Card Hover Variants ── */
+
+/* Glow: spinning conic-gradient border + shine sweep (Projects) */
+.card--glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--card-glow-angle), transparent 60%, var(--accent) 78%, var(--accent-2) 90%, transparent 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  --card-glow-angle: 0deg;
+  animation: cardGlowSpin 3s linear infinite paused;
+}
+.card--glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 55%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.card--glow:hover { border-color: transparent; }
+.card--glow:hover::before { opacity: 1; animation-play-state: running; }
+.card--glow:hover::after { transform: translateX(100%); }
+
+@keyframes cardGlowSpin {
+  to { --card-glow-angle: 360deg; }
+}
+
+/* Lift: subtle rise + soft shadow (About) */
+.card--lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+/* Accent-top: gradient top bar slides in (Skills) */
+.card--accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.card--accent-top:hover::before { transform: scaleX(1); }
+
+/* Border-left: accent left bar reveals (Experience) */
+.card--border-left::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--gradient);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+}
+.card--border-left:hover::before { transform: scaleY(1); }
+
+/* Soft: gentle scale + border (Education) */
+.card--soft:hover {
+  transform: scale(1.015);
+  border-color: rgba(230, 57, 70, 0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* Pop: scale up + accent shadow (Achievements) */
+.card--pop:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 36px rgba(230, 57, 70, 0.2);
+}
+
+/* Glass: background brightens + accent border (Certificates) */
+.card--glass:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(230, 57, 70, 0.3);
+}
+
+/* Float: bouncy rise (Hobbies) */
+.card--float:hover {
+  transform: translateY(-4px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+/* Subtle: border-color only (Contact) */
+.card--subtle:hover {
+  border-color: rgba(230, 57, 70, 0.4);
+  box-shadow: none;
 }
 
 /* ── 3D Section ── */
@@ -146,6 +249,21 @@
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .section-wrapper {
-    padding: 70px 0;
+    padding: 70px 16px;
+  }
+  .card--glow::before,
+  .card--glow::after,
+  .card--accent-top::before,
+  .card--border-left::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card--glow::before,
+  .card--glow::after,
+  .card--accent-top::before,
+  .card--border-left::before {
+    display: none;
   }
 }

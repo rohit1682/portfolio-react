@@ -4,6 +4,7 @@ import {
   scaleIn, popIn, staggerContainer, staggerFast, staggerItem,
   slideInLeft, slideInRight, flipIn, blurIn,
   fade3DUp, fade3DLeft, fade3DRight, cardReveal3D, stagger3D,
+  cardDramatic3D, cardDramatic3DAlt, staggerDramatic,
 } from "../animations";
 
 const delayVariants = [
@@ -21,6 +22,8 @@ const delayVariants = [
   ["fade3DLeft", fade3DLeft],
   ["fade3DRight", fade3DRight],
   ["cardReveal3D", cardReveal3D],
+  ["cardDramatic3D", cardDramatic3D],
+  ["cardDramatic3DAlt", cardDramatic3DAlt],
 ];
 
 describe("animation variants with delay", () => {
@@ -54,6 +57,11 @@ describe("stagger containers", () => {
 
   it("stagger3D has staggerChildren", () => {
     expect(stagger3D.visible.transition.staggerChildren).toBeGreaterThan(0);
+  });
+
+  it("staggerDramatic has wider stagger timing", () => {
+    expect(staggerDramatic.visible.transition.staggerChildren).toBe(0.12);
+    expect(staggerDramatic.visible.transition.delayChildren).toBe(0.15);
   });
 });
 

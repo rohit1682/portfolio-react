@@ -2,8 +2,8 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import App from "./App";
 
-vi.mock("./components/Hero3D/Hero3D", () => ({
-  default: () => <div data-testid="hero3d">Hero3D</div>,
+vi.mock("./components/HeroLightning/HeroLightning", () => ({
+  default: () => <canvas data-testid="hero-lightning" />,
 }));
 
 describe("App", () => {

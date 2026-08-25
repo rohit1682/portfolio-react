@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FolderOpen, ExternalLink, CheckCircle2, Star } from "lucide-react";
-import { projects } from "../../constants";
-import { cardReveal3D } from "../../hooks/animations";
+import { projects, personalInfo } from "../../constants";
+import { cardDramatic3D, cardDramatic3DAlt } from "../../hooks/animations";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Projects.module.css";
@@ -27,7 +27,7 @@ export default function Projects() {
   return (
     <section id="projects" className="section-wrapper section-3d">
       <div className="container">
-        <SectionTitle title="Projects" subtitle="Things I've built and shipped" />
+        <SectionTitle title="Projects" subtitle={personalInfo.projectsTagline} />
 
         <motion.div className={styles.filters} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           {["all", "featured", "others"].map(f => (
@@ -43,9 +43,9 @@ export default function Projects() {
               /* v8 ignore next */
               const sc = statusColors[project.status] || statusColors["Completed"];
               return (
-                <motion.div key={project.id} className={styles.cardWrap} variants={cardReveal3D} custom={i * 0.08} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+                <motion.div key={project.id} className={styles.cardWrap} variants={i % 2 === 0 ? cardDramatic3D : cardDramatic3DAlt} custom={i * 0.08} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }}>
                   <TiltCard
-                    className={`card ${styles.card} ${project.featured ? styles.featured : ""}`}
+                    className={`card card--glow ${styles.card} ${project.featured ? styles.featured : ""}`}
                     tiltRange={8}
                     hoverY={-8}
                     hoverShadow={project.featured ? "0 20px 60px rgba(180,30,45,0.2)" : "0 16px 40px rgba(0,0,0,0.4)"}

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Hobbies from "./Hobbies";
-import { hobbies } from "../../constants";
+import { hobbies, personalInfo } from "../../constants";
 
 describe("Hobbies", () => {
   it("renders the section title", () => {
@@ -11,7 +11,7 @@ describe("Hobbies", () => {
 
   it("renders subtitle", () => {
     render(<Hobbies />);
-    expect(screen.getByText("What I love doing outside of work")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.hobbiesTagline)).toBeInTheDocument();
   });
 
   it("renders all hobbies from constants", () => {

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, FolderGit2, Monitor, Users } from "lucide-react";
 import { GitHubCalendar } from "react-github-calendar";
 import { personalInfo, stats } from "../../constants";
-import { stagger3D, cardReveal3D } from "../../hooks/animations";
+import { staggerDramatic, cardDramatic3D } from "../../hooks/animations";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./About.module.css";
@@ -85,7 +85,7 @@ export default function About() {
   return (
     <section id="about" className="section-wrapper section-3d" ref={sectionRef}>
       <div className="container">
-        <SectionTitle title="About Me" subtitle="A little bit about who I am and what I do" />
+        <SectionTitle title="About Me" subtitle={personalInfo.aboutTagline} />
 
         <div className={styles.grid}>
           <motion.div className={styles.photoSide} style={{ y: photoY }}>
@@ -104,7 +104,7 @@ export default function About() {
 
           <motion.div className={styles.textSide} style={{ y: textY }}>
             <h3>{personalInfo.tagline}</h3>
-            <p>{personalInfo.summary}</p>
+            <p>{personalInfo.aboutIntro}</p>
 
             <div className={styles.infoGrid}>
               <div className={styles.infoItem}><span className={styles.label}>Email</span><a href={`mailto:${personalInfo.email}`} className={styles.link}>{personalInfo.email}</a></div>
@@ -127,14 +127,14 @@ export default function About() {
           </motion.div>
         </div>
 
-        <motion.div className={styles.statsGrid} ref={statsRef} variants={stagger3D} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div className={styles.statsGrid} ref={statsRef} variants={staggerDramatic} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
           {stats.map((stat, idx) => {
             const Icon = iconMap[stat.icon];
             return (
               <motion.div
                 key={stat.label}
-                className={`card ${styles.statCard}`}
-                variants={cardReveal3D}
+                className={`card card--lift ${styles.statCard}`}
+                variants={cardDramatic3D}
                 custom={idx * 0.08}
                 style={{ perspective: "800px", transformStyle: "preserve-3d" }}
                 whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(230,57,70,0.15)" }}
@@ -158,7 +158,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className={`card ${styles.calendarCard}`}
+          className={`card card--lift ${styles.calendarCard}`}
           initial={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.2 }}

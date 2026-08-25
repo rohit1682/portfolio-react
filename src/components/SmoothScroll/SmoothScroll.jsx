@@ -9,8 +9,8 @@ export default function SmoothScroll({ children }) {
     if (prefersReduced) return;
 
     const lenis = new Lenis({
-      lerp: 0.1,
-      duration: 1.2,
+      lerp: 0.12,
+      duration: 1.0,
       smoothWheel: true,
       syncTouch: false,
     });

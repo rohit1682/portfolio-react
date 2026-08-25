@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, Copy } from "lucide-react";
 import { personalInfo } from "../../constants";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import { fade3DLeft, fade3DRight } from "../../hooks/animations";
+import { cardDramatic3D, cardDramatic3DAlt } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import Toast from "../Toast/Toast";
 import styles from "./Contact.module.css";
@@ -45,7 +45,7 @@ export default function Contact() {
         <SectionTitle title="Get In Touch" subtitle="Have a project in mind or just want to say hi? My inbox is always open." />
 
         <div className={styles.grid}>
-          <motion.div className={styles.info} variants={fade3DLeft} custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+          <motion.div className={styles.info} variants={cardDramatic3D} custom={0} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
             <h3>{personalInfo.contactHeading}</h3>
             <p>{personalInfo.contactDescription}</p>
 
@@ -78,7 +78,7 @@ export default function Contact() {
             <SocialLinks />
           </motion.div>
 
-          <motion.form className={`card ${styles.form}`} onSubmit={handleSubmit} variants={fade3DRight} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+          <motion.form className={`card card--subtle ${styles.form}`} onSubmit={handleSubmit} variants={cardDramatic3DAlt} custom={0.1} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label htmlFor="name">Name</label>

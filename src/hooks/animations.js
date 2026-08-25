@@ -138,3 +138,26 @@ export const stagger3D = {
     transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
+
+export const cardDramatic3D = {
+  hidden: { opacity: 0, y: 60, rotateY: -15, z: -80, scale: 0.92 },
+  visible: (delay = 0) => ({
+    opacity: 1, y: 0, rotateY: 0, z: 0, scale: 1,
+    transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const cardDramatic3DAlt = {
+  hidden: { opacity: 0, y: 60, rotateY: 15, z: -80, scale: 0.92 },
+  visible: (delay = 0) => ({
+    opacity: 1, y: 0, rotateY: 0, z: 0, scale: 1,
+    transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const staggerDramatic = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
+  },
+};

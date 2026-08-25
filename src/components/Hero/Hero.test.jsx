@@ -1,10 +1,14 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Hero from "./Hero";
 import { personalInfo } from "../../constants";
 
-vi.mock("../Hero3D/Hero3D", () => ({
-  default: () => <div data-testid="hero3d">Hero3D</div>,
+vi.mock("../HeroLightning/HeroLightning", () => ({
+  default: () => <canvas data-testid="hero-lightning" />,
+}));
+
+vi.mock("../SocialLinks/SocialLinks", () => ({
+  default: () => <div data-testid="social-links">SocialLinks</div>,
 }));
 
 describe("Hero", () => {
@@ -15,7 +19,7 @@ describe("Hero", () => {
     vi.useRealTimers();
   });
 
-  it("renders the user name", () => {
+  it("renders the name", () => {
     render(<Hero />);
     expect(screen.getByText(personalInfo.name)).toBeInTheDocument();
   });
@@ -25,13 +29,16 @@ describe("Hero", () => {
     expect(screen.getByText(personalInfo.status, { exact: false })).toBeInTheDocument();
   });
 
-  it("renders the current role", () => {
+  it("renders profile photo", () => {
     render(<Hero />);
-    expect(screen.getByText(personalInfo.currentRole)).toBeInTheDocument();
+    const img = screen.getByAltText(personalInfo.name);
+    expect(img).toBeInTheDocument();
+    expect(img.src).toContain(personalInfo.photos.profile);
   });
 
-  it("renders the location", () => {
+  it("renders currentRole and location", () => {
     render(<Hero />);
+    expect(screen.getByText(personalInfo.currentRole)).toBeInTheDocument();
     expect(screen.getByText(personalInfo.location)).toBeInTheDocument();
   });
 
@@ -51,29 +58,9 @@ describe("Hero", () => {
     expect(screen.getByLabelText("Scroll down")).toBeInTheDocument();
   });
 
-  it("renders profile image", () => {
+  it("renders SocialLinks", () => {
     render(<Hero />);
-    const img = screen.getByAltText(personalInfo.name);
-    expect(img).toHaveAttribute("src", personalInfo.photos.profile);
-  });
-
-  it("starts the typing effect after delay", () => {
-    render(<Hero />);
-    act(() => { vi.advanceTimersByTime(700); });
-    act(() => { vi.advanceTimersByTime(500); });
-  });
-
-  it("types and deletes characters", () => {
-    render(<Hero />);
-    const totalChars = personalInfo.typedRoles[0].length;
-    act(() => { vi.advanceTimersByTime(600); });
-    for (let i = 0; i < totalChars + 5; i++) {
-      act(() => { vi.advanceTimersByTime(100); });
-    }
-    act(() => { vi.advanceTimersByTime(1800); });
-    for (let i = 0; i < totalChars + 2; i++) {
-      act(() => { vi.advanceTimersByTime(55); });
-    }
+    expect(screen.getByTestId("social-links")).toBeInTheDocument();
   });
 
   it("View My Work scrolls to projects", () => {
@@ -96,11 +83,5 @@ describe("Hero", () => {
     fireEvent.click(screen.getByLabelText("Scroll down"));
     expect(el.scrollIntoView).toHaveBeenCalled();
     document.body.removeChild(el);
-  });
-
-  it("cleans up timer on unmount", () => {
-    const { unmount } = render(<Hero />);
-    act(() => { vi.advanceTimersByTime(600); });
-    unmount();
   });
 });

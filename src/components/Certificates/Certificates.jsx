@@ -6,8 +6,8 @@ import {
   FileText, Image as ImageIcon, ExternalLink, X, Download, ChevronLeft, ChevronRight,
   Star, Calendar,
 } from "lucide-react";
-import { certificates, certificateCategories } from "../../constants";
-import { cardReveal3D, staggerItem } from "../../hooks/animations";
+import { certificates, certificateCategories, personalInfo } from "../../constants";
+import { cardDramatic3D, cardDramatic3DAlt, staggerItem } from "../../hooks/animations";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { issuerLogo, fallbackLogo, issuerInitials } from "./issuerLogos";
@@ -140,7 +140,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="section-wrapper">
       <div className="container">
-        <SectionTitle title="Certificates" subtitle="Verified credentials and program completions" />
+        <SectionTitle title="Certificates" subtitle={personalInfo.certificatesTagline} />
 
         {/* stat strip */}
         <motion.div
@@ -202,16 +202,16 @@ export default function Certificates() {
               return (
                 <motion.div
                   key={cert.title}
-                  variants={reduceMotion ? undefined : cardReveal3D}
+                  variants={reduceMotion ? undefined : (i % 2 === 0 ? cardDramatic3D : cardDramatic3DAlt)}
                   custom={i * 0.05}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
+                  viewport={{ once: false, amount: 0.1 }}
                   className={styles.cardWrap}
                 >
                   <TiltCard
                     disabled={reduceMotion}
-                    className={`card ${styles.card} ${cert.featured ? styles.featured : ""}`}
+                    className={`card card--glass ${styles.card} ${cert.featured ? styles.featured : ""}`}
                     onClick={() => setActiveIdx(i)}
                   >
                     {cert.featured && (

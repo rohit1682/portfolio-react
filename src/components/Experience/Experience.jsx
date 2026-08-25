@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Briefcase, MapPin, Calendar, CheckCircle2 } from "lucide-react";
-import { experience } from "../../constants";
+import { experience, personalInfo } from "../../constants";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Experience.module.css";
@@ -25,7 +25,7 @@ function TimelineItem({ item, index, scrollYProgress }) {
         <Briefcase size={12} />
       </motion.div>
 
-      <TiltCard className={`card ${styles.card}`} tiltRange={4} hoverY={-4}>
+      <TiltCard className={`card card--border-left ${styles.card}`} tiltRange={4} hoverY={-4}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <h3 className={styles.role}>{item.role}</h3>
@@ -73,7 +73,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section-wrapper section-3d" ref={sectionRef}>
       <div className="container">
-        <SectionTitle title="Experience" subtitle="My professional journey so far" />
+        <SectionTitle title="Experience" subtitle={personalInfo.experienceTagline} />
 
         <div className={styles.stickyWrap}>
           <div className={styles.timeline}>

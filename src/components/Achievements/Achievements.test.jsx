@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Achievements from "./Achievements";
-import { achievements } from "../../constants";
+import { achievements, personalInfo } from "../../constants";
 
 describe("Achievements", () => {
   it("renders the section title", () => {
@@ -11,7 +11,7 @@ describe("Achievements", () => {
 
   it("renders subtitle", () => {
     render(<Achievements />);
-    expect(screen.getByText("Milestones and recognitions along the way")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.achievementsTagline)).toBeInTheDocument();
   });
 
   it("renders all achievements from constants", () => {

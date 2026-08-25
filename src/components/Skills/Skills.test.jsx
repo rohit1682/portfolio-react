@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Skills from "./Skills";
-import { skillCategories, skillTags } from "../../constants";
+import { skillCategories, skillTags, personalInfo } from "../../constants";
 
 describe("Skills", () => {
   it("renders the section title", () => {
@@ -11,7 +11,7 @@ describe("Skills", () => {
 
   it("renders subtitle", () => {
     render(<Skills />);
-    expect(screen.getByText("Technologies and tools I work with")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.skillsTagline)).toBeInTheDocument();
   });
 
   it("renders skill categories in bars view", () => {

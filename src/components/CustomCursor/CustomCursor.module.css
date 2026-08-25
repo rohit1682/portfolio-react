@@ -1,0 +1,55 @@
+.dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 10001;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.ring {
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-2);
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+  transition: width 0.25s ease, height 0.25s ease, top 0.25s ease, left 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.hovering {
+  width: 54px;
+  height: 54px;
+  top: -27px;
+  left: -27px;
+  border-color: var(--accent);
+  opacity: 0.6;
+}
+
+.clicking {
+  width: 28px;
+  height: 28px;
+  top: -14px;
+  left: -14px;
+}
+
+:global(.custom-cursor-active) {
+  cursor: none;
+}
+:global(.custom-cursor-active) a,
+:global(.custom-cursor-active) button,
+:global(.custom-cursor-active) [role="button"],
+:global(.custom-cursor-active) input,
+:global(.custom-cursor-active) textarea,
+:global(.custom-cursor-active) select {
+  cursor: none;
+}

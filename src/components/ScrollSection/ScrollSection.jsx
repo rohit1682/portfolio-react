@@ -1,27 +1,24 @@
 import { motion } from "framer-motion";
 import useScrollSection from "../../hooks/useScrollSection";
 
-export default function ScrollSection({ children, id, className = "", style = {} }) {
-  const { ref, transforms } = useScrollSection();
+export default function ScrollSection({ children, preset = "zoomFade", className = "" }) {
+  const { ref, style } = useScrollSection({ preset });
 
   return (
-    <section
-      id={id}
+    <div
       ref={ref}
       className={className}
-      style={{ perspective: "1200px", ...style }}
+      style={{ perspective: "1200px", overflow: "hidden" }}
     >
       <motion.div
         style={{
-          opacity: transforms.opacity,
-          y: transforms.y,
-          scale: transforms.scale,
-          rotateX: transforms.rotateX,
+          ...style,
           transformStyle: "preserve-3d",
+          willChange: "transform, opacity",
         }}
       >
         {children}
       </motion.div>
-    </section>
+    </div>
   );
 }

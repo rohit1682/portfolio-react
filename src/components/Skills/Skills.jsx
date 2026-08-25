@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { skillCategories, skillTags } from "../../constants";
-import { cardReveal3D, stagger3D } from "../../hooks/animations";
+import { skillCategories, skillTags, personalInfo } from "../../constants";
+import { cardDramatic3D, staggerDramatic } from "../../hooks/animations";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Skills.module.css";
@@ -45,7 +45,7 @@ export default function Skills() {
   return (
     <section id="skills" className="section-wrapper section-bg section-3d" ref={sectionRef}>
       <div className="container">
-        <SectionTitle title="Skills" subtitle="Technologies and tools I work with" />
+        <SectionTitle title="Skills" subtitle={personalInfo.skillsTagline} />
 
         <motion.div className={styles.tabs} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <button className={`${styles.tab} ${activeTab === "bars" ? styles.tabActive : ""}`} onClick={() => setActiveTab("bars")}>Proficiency</button>
@@ -56,8 +56,8 @@ export default function Skills() {
           {activeTab === "bars" && (
             <motion.div key="bars" className={styles.barsGrid} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
               {skillCategories.map((group, gi) => (
-                <motion.div key={group.category} variants={cardReveal3D} custom={gi * 0.08} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-                  <TiltCard className={`card ${styles.group}`} tiltRange={4} hoverY={-4}>
+                <motion.div key={group.category} variants={cardDramatic3D} custom={gi * 0.08} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
+                  <TiltCard className={`card card--accent-top ${styles.group}`} tiltRange={4} hoverY={-4}>
                     <h3 className={styles.category}>{group.category}</h3>
                     {group.items.map((skill) => (
                       <SkillBar key={skill.name} name={skill.name} level={skill.level} scrollProgress={scrollYProgress} />
@@ -69,7 +69,7 @@ export default function Skills() {
           )}
 
           {activeTab === "tags" && (
-            <motion.div key="tags" className={styles.tagsView} variants={stagger3D} initial="hidden" whileInView="visible" viewport={{ once: true }} animate="visible">
+            <motion.div key="tags" className={styles.tagsView} variants={staggerDramatic} initial="hidden" whileInView="visible" viewport={{ once: false }} animate="visible">
               {Object.entries(skillTags).map(([category, tags], ci) => (
                 <motion.div key={category} className={styles.tagGroup} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: ci * 0.08, duration: 0.5 }}>
                   <h3 className={styles.tagCategory}>{category}</h3>

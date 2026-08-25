@@ -3,7 +3,8 @@ import {
   Camera, Mic2, Code2, CircleDot, Zap, TrendingUp,
   Swords, Plane, BookOpen, Music, Dumbbell, Languages,
 } from "lucide-react";
-import { hobbies } from "../../constants";
+import { hobbies, personalInfo } from "../../constants";
+import { cardDramatic3D } from "../../hooks/animations";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Hobbies.module.css";
@@ -13,22 +14,12 @@ const iconMap = {
   Swords, Plane, BookOpen, Music, Dumbbell, Languages,
 };
 
-const waveVariant = {
-  hidden: { opacity: 0, y: 30, scale: 0.85 },
-  /* v8 ignore next */
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { delay: i * 0.06, duration: 0.5, ease: "backOut" },
-  }),
-};
 
 export default function Hobbies() {
   return (
     <section id="hobbies" className="section-wrapper section-3d">
       <div className="container">
-        <SectionTitle title="Beyond the Code" subtitle="What I love doing outside of work" />
+        <SectionTitle title="Beyond the Code" subtitle={personalInfo.hobbiesTagline} />
 
         <div className={styles.grid}>
           {hobbies.map((hobby, i) => {
@@ -38,13 +29,13 @@ export default function Hobbies() {
             return (
               <motion.div
                 key={hobby.name}
-                variants={waveVariant}
-                custom={i}
+                variants={cardDramatic3D}
+                custom={i * 0.06}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
+                viewport={{ once: false, amount: 0.1 }}
               >
-                <TiltCard className={`card ${styles.card}`} tiltRange={6} hoverY={-4}>
+                <TiltCard className={`card card--float ${styles.card}`} tiltRange={6} hoverY={-4}>
                   <div className={styles.iconWrap}>
                     {iconEl}
                   </div>

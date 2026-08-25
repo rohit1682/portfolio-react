@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { GraduationCap, MapPin, Users, Award, CheckCircle2 } from "lucide-react";
-import { education, volunteer } from "../../constants";
-import { fade3DLeft, fade3DRight } from "../../hooks/animations";
+import { education, volunteer, personalInfo } from "../../constants";
+import { cardDramatic3D, cardDramatic3DAlt } from "../../hooks/animations";
 import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Education.module.css";
 
 function EduCard({ item, i, isVolunteer, side }) {
-  const variant = side === "left" ? fade3DLeft : fade3DRight;
+  const variant = side === "left" ? cardDramatic3D : cardDramatic3DAlt;
   return (
-    <motion.div variants={variant} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <TiltCard className={`card ${styles.card} ${isVolunteer ? styles.volunteerCard : ""}`} tiltRange={4} hoverY={-4}>
+    <motion.div variants={variant} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
+      <TiltCard className={`card card--soft ${styles.card} ${isVolunteer ? styles.volunteerCard : ""}`} tiltRange={4} hoverY={-4}>
         <div className={styles.cardTop}>
           <div className={styles.iconWrap}>{isVolunteer ? <Users size={18} /> : <GraduationCap size={18} />}</div>
           <span className="tag">{item.period}</span>
@@ -41,7 +41,7 @@ export default function Education() {
   return (
     <section id="education" className="section-wrapper section-bg section-3d">
       <div className="container">
-        <SectionTitle title="Education" subtitle="My academic background and leadership roles" />
+        <SectionTitle title="Education" subtitle={personalInfo.educationTagline} />
 
         <div className={styles.grid}>
           <div>

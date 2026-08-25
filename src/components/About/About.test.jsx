@@ -16,9 +16,9 @@ describe("About", () => {
     expect(screen.getByText(personalInfo.tagline)).toBeInTheDocument();
   });
 
-  it("renders the summary", () => {
+  it("renders the about intro", () => {
     render(<About />);
-    expect(screen.getByText(personalInfo.summary)).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.aboutIntro)).toBeInTheDocument();
   });
 
   it("renders email link", () => {

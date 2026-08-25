@@ -29,7 +29,7 @@ export default function Footer() {
   const footerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: footerRef,
-    offset: ["start end", "start 0.6"],
+    offset: ["start end", "start 0.85"],
   });
   const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
