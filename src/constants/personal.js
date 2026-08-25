@@ -74,8 +74,8 @@ export const personalInfo = {
   footerTagline: "Crafted with React, Three.js, and too much coffee.",
 
   marqueeItems: [
-    "React", "Node.js", "TypeScript", "AWS", "Java", "Spring Boot",
+    "React", "Node.js", "TypeScript", "AWS", "Azure", "Java", "Spring Boot",
     "PostgreSQL", "MongoDB", "Docker", "Kubernetes", "GraphQL", "Redis",
-    "Three.js", "Next.js", "Vite", "Tailwind CSS",
+    "Three.js", "Next.js", "NestJS", "Vite", "Tailwind CSS", "BigCommerce",
   ],
 };
