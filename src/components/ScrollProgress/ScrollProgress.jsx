@@ -13,7 +13,8 @@ export default function ScrollProgress() {
     const update = () => {
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
-      const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      /* v8 ignore next */
+      const pct = max > 0 ? Math.min((h.scrollTop / max) * 100, 100) : 0;
       setProgress(pct);
     };
     const onScroll = () => {

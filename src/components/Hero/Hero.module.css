@@ -7,35 +7,33 @@
   position: relative;
   overflow: hidden;
   padding: 120px 24px 80px;
+  perspective: 1200px;
 }
 
-/* Background image — offset right so content on left reveals it */
 .bgImage {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center top;
   filter: blur(0.5px) brightness(0.55);
-  /* Shift image to the right so the left side is darker/blended */
   transform: scale(1.08) translateX(8%);
   animation: bgDrift 18s ease-in-out infinite alternate;
 }
 
-/* Drift in opposite direction to content */
 @keyframes bgDrift {
   0%   { transform: scale(1.08) translateX(6%); }
   100% { transform: scale(1.12) translateX(12%); }
 }
 
-/* Overlay: heavy on left (content area), fades to transparent on right (image visible) */
 .bgOverlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(to right,
-      rgba(10,8,8,0.97) 0%,
-      rgba(10,8,8,0.88) 38%,
-      rgba(10,8,8,0.45) 62%,
+      rgba(10,8,8,0.95) 0%,
+      rgba(10,8,8,0.85) 38%,
+      rgba(10,8,8,0.4) 62%,
       rgba(10,8,8,0.08) 80%,
       transparent 100%
     ),
@@ -45,6 +43,7 @@
       transparent 70%,
       rgba(10,8,8,1) 100%
     );
+  pointer-events: none;
 }
 
 .orb1, .orb2, .orb3 {
@@ -63,26 +62,18 @@
   50% { transform: translateY(-24px) scale(1.04); }
 }
 
-/* Content shifted to left side */
 .content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 620px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* Animate content subtly leftward (opposite to bg drift) */
-  animation: contentDrift 18s ease-in-out infinite alternate;
   padding-left: clamp(24px, 6vw, 80px);
+  transform-style: preserve-3d;
 }
 
-@keyframes contentDrift {
-  0%   { transform: translateX(0px); }
-  100% { transform: translateX(-8px); }
-}
-
-/* Profile photo */
 .photoWrap {
   position: relative;
   width: 110px;
@@ -204,8 +195,6 @@
   margin-bottom: 26px;
 }
 
-.socials { justify-content: flex-start; }
-
 .scrollDown {
   position: absolute;
   bottom: 28px; left: 50%;
@@ -219,7 +208,7 @@
   cursor: pointer;
   animation: bounce 2s ease-in-out infinite;
   transition: var(--transition);
-  z-index: 1;
+  z-index: 2;
 }
 
 .scrollDown:hover { border-color: var(--accent); color: var(--accent); }

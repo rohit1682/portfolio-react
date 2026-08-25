@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+  height: 40vh;
+  pointer-events: none;
+}
+
+.stickyWrap {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.stripe {
+  flex: 1;
+  width: 100%;
+  background: var(--bg-primary);
+  transform-origin: bottom;
+}

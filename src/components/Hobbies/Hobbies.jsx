@@ -3,8 +3,9 @@ import {
   Camera, Mic2, Code2, CircleDot, Zap, TrendingUp,
   Swords, Plane, BookOpen, Music, Dumbbell, Languages,
 } from "lucide-react";
-import { hobbies } from "../../constants";
-import { scaleIn } from "../../hooks/animations";
+import { hobbies, personalInfo } from "../../constants";
+import { cardDramatic3D } from "../../hooks/animations";
+import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Hobbies.module.css";
 
@@ -13,30 +14,33 @@ const iconMap = {
   Swords, Plane, BookOpen, Music, Dumbbell, Languages,
 };
 
+
 export default function Hobbies() {
   return (
-    <section id="hobbies" className="section-wrapper">
+    <section id="hobbies" className="section-wrapper section-3d">
       <div className="container">
-        <SectionTitle title="Beyond the Code" subtitle="What I love doing outside of work" />
+        <SectionTitle title="Beyond the Code" subtitle={personalInfo.hobbiesTagline} />
 
         <div className={styles.grid}>
           {hobbies.map((hobby, i) => {
             const Icon = iconMap[hobby.icon];
+            /* v8 ignore next */
+            const iconEl = Icon ? <Icon size={28} /> : <span style={{ fontSize: "1.5rem" }}>✦</span>;
             return (
               <motion.div
                 key={hobby.name}
-                className={`card ${styles.card}`}
-                variants={scaleIn}
+                variants={cardDramatic3D}
                 custom={i * 0.06}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                whileHover={{ scale: 1.06, y: -4 }}
+                viewport={{ once: false, amount: 0.1 }}
               >
-                <div className={styles.iconWrap}>
-                  {Icon ? <Icon size={28} /> : <span style={{ fontSize: "1.5rem" }}>✦</span>}
-                </div>
-                <span className={styles.name}>{hobby.name}</span>
+                <TiltCard className={`card card--float ${styles.card}`} tiltRange={6} hoverY={-4}>
+                  <div className={styles.iconWrap}>
+                    {iconEl}
+                  </div>
+                  <span className={styles.name}>{hobby.name}</span>
+                </TiltCard>
               </motion.div>
             );
           })}

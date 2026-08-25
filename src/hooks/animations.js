@@ -97,3 +97,67 @@ export const blurIn = {
     transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
+
+// ── 3D-aware variants ──
+
+export const fade3DUp = {
+  hidden: { opacity: 0, y: 50, rotateX: 6, z: -30 },
+  visible: (delay = 0) => ({
+    opacity: 1, y: 0, rotateX: 0, z: 0,
+    transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const fade3DLeft = {
+  hidden: { opacity: 0, x: -60, rotateY: 8 },
+  visible: (delay = 0) => ({
+    opacity: 1, x: 0, rotateY: 0,
+    transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const fade3DRight = {
+  hidden: { opacity: 0, x: 60, rotateY: -8 },
+  visible: (delay = 0) => ({
+    opacity: 1, x: 0, rotateY: 0,
+    transition: { duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const cardReveal3D = {
+  hidden: { opacity: 0, rotateX: 15, z: -50 },
+  visible: (delay = 0) => ({
+    opacity: 1, rotateX: 0, z: 0,
+    transition: { duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const stagger3D = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
+
+export const cardDramatic3D = {
+  hidden: { opacity: 0, y: 60, rotateY: -15, z: -80, scale: 0.92 },
+  visible: (delay = 0) => ({
+    opacity: 1, y: 0, rotateY: 0, z: 0, scale: 1,
+    transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const cardDramatic3DAlt = {
+  hidden: { opacity: 0, y: 60, rotateY: 15, z: -80, scale: 0.92 },
+  visible: (delay = 0) => ({
+    opacity: 1, y: 0, rotateY: 0, z: 0, scale: 1,
+    transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
+
+export const staggerDramatic = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
+  },
+};

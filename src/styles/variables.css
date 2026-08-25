@@ -24,9 +24,13 @@
   /* Typography */
   --font-body: 'Inter', sans-serif;
   --font-heading: 'Space Grotesk', sans-serif;
+  --heading-xl: clamp(3rem, 8vw, 6rem);
+  --heading-lg: clamp(2rem, 5vw, 3.5rem);
+  --heading-md: clamp(1.5rem, 3vw, 2.2rem);
+  --heading-sm: clamp(1.1rem, 2vw, 1.5rem);
 
   /* Spacing */
-  --section-padding: 100px 0;
+  --section-padding: clamp(80px, 15vh, 160px) clamp(24px, 6vw, 80px);
   --container-max: 1200px;
   --container-padding: 0 24px;
 
@@ -38,4 +42,8 @@
 
   /* Transitions */
   --transition: all 0.3s ease;
+
+  /* 3D */
+  --perspective-section: 1200px;
+  --z-hero-canvas: -1;
 }

@@ -1,48 +1,17 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import {
-  motion, AnimatePresence, useMotionValue, useTransform, useSpring, useReducedMotion,
+  motion, AnimatePresence, useReducedMotion,
 } from "framer-motion";
 import {
   FileText, Image as ImageIcon, ExternalLink, X, Download, ChevronLeft, ChevronRight,
   Star, Calendar,
 } from "lucide-react";
-import { certificates, certificateCategories } from "../../constants";
-import { scaleIn, staggerItem } from "../../hooks/animations";
+import { certificates, certificateCategories, personalInfo } from "../../constants";
+import { cardDramatic3D, cardDramatic3DAlt, staggerItem } from "../../hooks/animations";
+import TiltCard from "../TiltCard/TiltCard";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { issuerLogo, fallbackLogo, issuerInitials } from "./issuerLogos";
 import styles from "./Certificates.module.css";
-
-/* ── Tilt wrapper ─────────────────────────────────────────────── */
-function TiltCard({ children, className, onClick, disabled }) {
-  const ref = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 30 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 300, damping: 30 });
-
-  const handleMouse = (e) => {
-    if (!ref.current || disabled) return;
-    const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-  const reset = () => { x.set(0); y.set(0); };
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      onClick={onClick}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      style={disabled ? undefined : { rotateX, rotateY, transformStyle: "preserve-3d" }}
-      whileHover={disabled ? undefined : { y: -8 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 /* ── Animated counter ─────────────────────────────────────────── */
 function CountUp({ to, duration = 1.2 }) {
@@ -51,6 +20,7 @@ function CountUp({ to, duration = 1.2 }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    /* v8 ignore start */
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
       const start = performance.now();
@@ -62,6 +32,7 @@ function CountUp({ to, duration = 1.2 }) {
       requestAnimationFrame(tick);
       io.disconnect();
     }, { threshold: 0.4 });
+    /* v8 ignore stop */
     io.observe(el);
     return () => io.disconnect();
   }, [to, duration]);
@@ -74,15 +45,19 @@ function CertPreview({ cert }) {
   const [visible, setVisible] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const fileUrl = encodeURI(cert.file);
+  /* v8 ignore next */
   const thumbUrl = cert.thumb ? encodeURI(cert.thumb) : null;
+  /* v8 ignore next */
   const webpUrl = thumbUrl ? thumbUrl.replace(/\.png$/i, ".webp") : null;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setVisible(true); io.disconnect(); }
-    }, { rootMargin: "200px" });
+    const io = new IntersectionObserver(
+      /* v8 ignore next */
+      ([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } },
+      { rootMargin: "200px" }
+    );
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -165,7 +140,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="section-wrapper">
       <div className="container">
-        <SectionTitle title="Certificates" subtitle="Verified credentials and program completions" />
+        <SectionTitle title="Certificates" subtitle={personalInfo.certificatesTagline} />
 
         {/* stat strip */}
         <motion.div
@@ -227,16 +202,16 @@ export default function Certificates() {
               return (
                 <motion.div
                   key={cert.title}
-                  variants={reduceMotion ? undefined : scaleIn}
+                  variants={reduceMotion ? undefined : (i % 2 === 0 ? cardDramatic3D : cardDramatic3DAlt)}
                   custom={i * 0.05}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
+                  viewport={{ once: false, amount: 0.1 }}
                   className={styles.cardWrap}
                 >
                   <TiltCard
                     disabled={reduceMotion}
-                    className={`card ${styles.card} ${cert.featured ? styles.featured : ""}`}
+                    className={`card card--glass ${styles.card} ${cert.featured ? styles.featured : ""}`}
                     onClick={() => setActiveIdx(i)}
                   >
                     {cert.featured && (

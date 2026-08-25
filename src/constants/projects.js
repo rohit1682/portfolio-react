@@ -1,6 +1,7 @@
 export const projects = [
   {
     id: 1,
+    color: "linear-gradient(135deg, #b91c2e 0%, #e85d75 50%, #f59e6b 100%)",
     title: "Energy-X",
     subtitle: "Gym Management Platform",
     description:
@@ -21,6 +22,7 @@ export const projects = [
   },
   {
     id: 2,
+    color: "linear-gradient(135deg, #7c1d2e 0%, #b91c2e 50%, #e85d75 100%)",
     title: "DoConnect",
     subtitle: "Technical Q&A Platform",
     description:
@@ -40,6 +42,7 @@ export const projects = [
   },
   {
     id: 7,
+    color: "linear-gradient(135deg, #1a1a2e 0%, #b91c2e 50%, #e85d75 100%)",
     title: "Interview Slot Booking API",
     subtitle: "Production-Ready Hiring Backend",
     description:
@@ -60,6 +63,7 @@ export const projects = [
   },
   {
     id: 3,
+    color: "linear-gradient(135deg, #2d1b4e 0%, #b91c2e 50%, #f59e6b 100%)",
     title: "ResuNova",
     subtitle: "AI Resume Builder",
     description:
@@ -79,6 +83,7 @@ export const projects = [
   },
   {
     id: 4,
+    color: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
     title: "Diabetic Retinopathy Classification",
     subtitle: "ML / Deep Learning",
     description:
@@ -92,6 +97,7 @@ export const projects = [
   },
   {
     id: 5,
+    color: "linear-gradient(135deg, #1a0a2e 0%, #7c1d2e 50%, #b91c2e 100%)",
     title: "CvGenie",
     subtitle: "AI Chatbot Resume Generator",
     description:
@@ -105,6 +111,7 @@ export const projects = [
   },
   {
     id: 6,
+    color: "linear-gradient(135deg, #1a1a1a 0%, #4a1a2a 50%, #b91c2e 100%)",
     title: "WeCare",
     subtitle: "Clothing Donation Platform",
     description:

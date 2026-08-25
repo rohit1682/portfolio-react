@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
 import { Trophy, Globe, FileCheck, Medal, Star, Award } from "lucide-react";
-import { achievements } from "../../constants";
-import { scaleIn } from "../../hooks/animations";
+import { achievements, personalInfo } from "../../constants";
+import { cardDramatic3D } from "../../hooks/animations";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import styles from "./Achievements.module.css";
 
 const iconMap = { Trophy, Globe, FileCheck, Medal, Star, Award };
 
+
 export default function Achievements() {
   return (
-    <section id="achievements" className="section-wrapper section-bg">
+    <section id="achievements" className="section-wrapper section-bg section-3d">
       <div className="container">
-        <SectionTitle title="Achievements" subtitle="Milestones and recognitions along the way" />
+        <SectionTitle title="Achievements" subtitle={personalInfo.achievementsTagline} />
 
         <motion.p
           className={styles.note}
@@ -29,13 +30,14 @@ export default function Achievements() {
             return (
               <motion.div
                 key={item.title}
-                className={`card ${styles.achieveCard} ${item.highlight ? styles.highlight : ""}`}
-                variants={scaleIn}
+                className={`card card--pop ${styles.achieveCard} ${item.highlight ? styles.highlight : ""}`}
+                variants={cardDramatic3D}
                 custom={i * 0.06}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ scale: 1.02, y: -3 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ scale: 1.02, y: -3, z: 20 }}
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <div
                   className={styles.achieveIcon}
