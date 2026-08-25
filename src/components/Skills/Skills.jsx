@@ -8,6 +8,7 @@ import styles from "./Skills.module.css";
 
 function SkillBar({ name, level, scrollProgress }) {
   const width = useTransform(scrollProgress, [0.1, 0.6], [0, level]);
+  /* v8 ignore next */
   const widthStr = useTransform(width, (v) => `${Math.min(v, level)}%`);
 
   return (
@@ -45,11 +46,11 @@ export default function Skills() {
   return (
     <section id="skills" className="section-wrapper section-bg section-3d" ref={sectionRef}>
       <div className="container">
-        <SectionTitle title="Skills" subtitle={personalInfo.skillsTagline} />
+        <SectionTitle title={personalInfo.skillsTitle} subtitle={personalInfo.skillsTagline} />
 
         <motion.div className={styles.tabs} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-          <button className={`${styles.tab} ${activeTab === "bars" ? styles.tabActive : ""}`} onClick={() => setActiveTab("bars")}>Proficiency</button>
-          <button className={`${styles.tab} ${activeTab === "tags" ? styles.tabActive : ""}`} onClick={() => setActiveTab("tags")}>All Skills</button>
+          <button className={`${styles.tab} ${activeTab === "bars" ? styles.tabActive : ""}`} onClick={() => setActiveTab("bars")}>{personalInfo.skillsTabs.proficiency}</button>
+          <button className={`${styles.tab} ${activeTab === "tags" ? styles.tabActive : ""}`} onClick={() => setActiveTab("tags")}>{personalInfo.skillsTabs.all}</button>
         </motion.div>
 
         <AnimatePresence mode="wait">

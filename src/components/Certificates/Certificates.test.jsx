@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import Certificates from "./Certificates";
-import { certificates, certificateCategories } from "../../constants";
+import { certificates, certificateCategories, personalInfo } from "../../constants";
 
 describe("Certificates", () => {
   const flushIO = async () => {
@@ -13,7 +13,7 @@ describe("Certificates", () => {
   it("renders the section title", async () => {
     render(<Certificates />);
     await flushIO();
-    expect(screen.getByText("Certificates")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.certificatesTitle)).toBeInTheDocument();
   });
 
   it("renders All filter chip", async () => {
@@ -71,7 +71,7 @@ describe("Certificates", () => {
     if (featured.length > 0) {
       render(<Certificates />);
       await flushIO();
-      expect(screen.getAllByText("Featured").length).toBeGreaterThan(0);
+      expect(screen.getAllByText(personalInfo.featuredLabel).length).toBeGreaterThan(0);
     }
   });
 

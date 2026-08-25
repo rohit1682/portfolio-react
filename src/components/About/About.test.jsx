@@ -68,7 +68,7 @@ describe("About", () => {
 
   it("renders Say Hello and GitHub Profile buttons", () => {
     render(<About />);
-    expect(screen.getAllByText("Say Hello").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.heroSecondaryCTA).length).toBeGreaterThan(0);
     expect(screen.getByText("GitHub Profile")).toBeInTheDocument();
   });
 

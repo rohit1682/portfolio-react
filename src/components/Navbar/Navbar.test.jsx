@@ -25,12 +25,12 @@ describe("Navbar", () => {
 
   it("renders Download CV button", () => {
     render(<Navbar onCVOpen={onCVOpen} />);
-    expect(screen.getByText("Download CV")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.downloadCVLabel)).toBeInTheDocument();
   });
 
   it("calls onCVOpen when CV button is clicked", () => {
     render(<Navbar onCVOpen={onCVOpen} />);
-    fireEvent.click(screen.getByText("Download CV"));
+    fireEvent.click(screen.getByText(personalInfo.downloadCVLabel));
     expect(onCVOpen).toHaveBeenCalled();
   });
 

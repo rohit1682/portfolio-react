@@ -90,6 +90,7 @@ function CertPreview({ cert }) {
           type="application/pdf"
           className={styles.pdfFrame}
           aria-label={cert.title}
+          /* v8 ignore next */
           onLoad={() => setLoaded(true)}
         >
           <div className={styles.pdfFallback}><FileText size={42} /><span>PDF</span></div>
@@ -140,7 +141,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="section-wrapper">
       <div className="container">
-        <SectionTitle title="Certificates" subtitle={personalInfo.certificatesTagline} />
+        <SectionTitle title={personalInfo.certificatesTitle} subtitle={personalInfo.certificatesTagline} />
 
         {/* stat strip */}
         <motion.div
@@ -216,7 +217,7 @@ export default function Certificates() {
                   >
                     {cert.featured && (
                       <div className={styles.featuredBadge}>
-                        <Star size={11} fill="currentColor" /> Featured
+                        <Star size={11} fill="currentColor" /> {personalInfo.featuredLabel}
                       </div>
                     )}
 

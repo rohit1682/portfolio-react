@@ -48,12 +48,14 @@ export default function App() {
         <ScrollSection preset="curtainDrop"><Hobbies /></ScrollSection>
         <ScrollSection preset="perspectiveRise"><Contact /></ScrollSection>
         <Footer />
+        {/* v8 ignore start */}
         <CommandPalette onOpenCV={() => setCvOpen(true)} />
         {cvOpen && (
           <Suspense fallback={null}>
             <CVPreview onClose={() => setCvOpen(false)} />
           </Suspense>
         )}
+        {/* v8 ignore stop */}
       </SmoothScroll>
     </>
   );

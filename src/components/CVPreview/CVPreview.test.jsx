@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import CVPreview from "./CVPreview";
+import { personalInfo } from "../../constants";
 
 describe("CVPreview", () => {
   const onClose = vi.fn();
@@ -55,7 +56,7 @@ describe("CVPreview", () => {
 
   it("renders title and subtitle", () => {
     render(<CVPreview onClose={onClose} />);
-    expect(screen.getByText("Download CV")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.downloadCVLabel)).toBeInTheDocument();
     expect(screen.getByText(/pick a theme/i)).toBeInTheDocument();
   });
 

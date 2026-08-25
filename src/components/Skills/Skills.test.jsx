@@ -6,7 +6,7 @@ import { skillCategories, skillTags, personalInfo } from "../../constants";
 describe("Skills", () => {
   it("renders the section title", () => {
     render(<Skills />);
-    expect(screen.getByText("Skills")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.skillsTitle)).toBeInTheDocument();
   });
 
   it("renders subtitle", () => {
@@ -33,13 +33,13 @@ describe("Skills", () => {
 
   it("has Proficiency and All Skills tabs", () => {
     render(<Skills />);
-    expect(screen.getByText("Proficiency")).toBeInTheDocument();
-    expect(screen.getByText("All Skills")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.skillsTabs.proficiency)).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.skillsTabs.all)).toBeInTheDocument();
   });
 
   it("switches to tags view when clicking All Skills", () => {
     render(<Skills />);
-    fireEvent.click(screen.getByText("All Skills"));
+    fireEvent.click(screen.getByText(personalInfo.skillsTabs.all));
     Object.keys(skillTags).forEach((category) => {
       expect(screen.getByText(category)).toBeInTheDocument();
     });
@@ -47,7 +47,7 @@ describe("Skills", () => {
 
   it("renders all tag items in tags view", () => {
     render(<Skills />);
-    fireEvent.click(screen.getByText("All Skills"));
+    fireEvent.click(screen.getByText(personalInfo.skillsTabs.all));
     Object.values(skillTags).forEach((tags) => {
       tags.forEach((tag) => {
         expect(screen.getByText(tag)).toBeInTheDocument();
@@ -57,8 +57,8 @@ describe("Skills", () => {
 
   it("switches back to bars view", () => {
     render(<Skills />);
-    fireEvent.click(screen.getByText("All Skills"));
-    fireEvent.click(screen.getByText("Proficiency"));
+    fireEvent.click(screen.getByText(personalInfo.skillsTabs.all));
+    fireEvent.click(screen.getByText(personalInfo.skillsTabs.proficiency));
     skillCategories.forEach((cat) => {
       expect(screen.getByText(cat.category)).toBeInTheDocument();
     });
@@ -71,14 +71,14 @@ describe("Skills", () => {
 
   it("Proficiency tab is active by default", () => {
     render(<Skills />);
-    const profTab = screen.getByText("Proficiency");
+    const profTab = screen.getByText(personalInfo.skillsTabs.proficiency);
     expect(profTab.className).toContain("tabActive");
   });
 
   it("All Skills tab becomes active on click", () => {
     render(<Skills />);
-    fireEvent.click(screen.getByText("All Skills"));
-    const tagsTab = screen.getByText("All Skills");
+    fireEvent.click(screen.getByText(personalInfo.skillsTabs.all));
+    const tagsTab = screen.getByText(personalInfo.skillsTabs.all);
     expect(tagsTab.className).toContain("tabActive");
   });
 });

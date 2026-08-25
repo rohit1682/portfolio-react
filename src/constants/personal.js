@@ -34,10 +34,27 @@ export const personalInfo = {
   degree: "B.Tech — CSE, KIIT",
   status: "Open to Opportunities",
 
-  heroHeadline: "Code with",
-  heroHeadlineBold: "purpose.",
-  heroSubtext:
-    "Full-stack developer crafting scalable web applications with modern technologies and clean architecture.",
+  heroGreeting: "Hi, I'm",
+  heroPrimaryCTA: "View My Work",
+  heroSecondaryCTA: "Say Hello",
+
+  aboutTitle: "About Me",
+  skillsTitle: "Skills",
+  experienceTitle: "Experience",
+  educationTitle: "Education",
+  projectsTitle: "Projects",
+  achievementsTitle: "Achievements",
+  certificatesTitle: "Certificates",
+  hobbiesTitle: "Beyond the Code",
+  contactTitle: "Get In Touch",
+
+  preloaderWords: ["Code.", "Build.", "Ship."],
+
+  skillsTabs: { proficiency: "Proficiency", all: "All Skills" },
+  projectFilters: { all: "All", featured: "⭐ Featured", more: "More" },
+  featuredLabel: "Featured",
+  downloadCVLabel: "Download CV",
+  backToTopLabel: "Top",
 
   aboutIntro:
     "I'm a full-stack developer who turns complex problems into clean, scalable solutions. From cloud-native backends to pixel-perfect frontends — I build software that works and looks good doing it.",
@@ -50,6 +67,7 @@ export const personalInfo = {
   certificatesTagline: "Validated expertise. Continuous growth.",
   hobbiesTagline: "Beyond the code.",
 
+  contactTagline: "Have a project in mind or just want to say hi? My inbox is always open.",
   contactHeading: "Let's build something.",
   contactDescription:
     "Got a project in mind? Let's talk. I'm always open to new opportunities and interesting collaborations. I usually reply within a day.",

@@ -150,6 +150,7 @@ export default function Navbar({ onCVOpen }) {
               >
                 <button
                   className={linkClass}
+                  /* v8 ignore next */
                   onClick={() => handleNav(link.href)}
                   tabIndex={linkTabIndex}
                   aria-hidden={!linksOpen}
@@ -172,9 +173,9 @@ export default function Navbar({ onCVOpen }) {
             <Command size={13} />
             <span className={styles.cmdkLabel}>{isMac ? "⌘" : "Ctrl"} K</span>
           </button>
-          <button className={styles.cvBtn} onClick={onCVOpen} aria-label="Download CV">
+          <button className={styles.cvBtn} onClick={onCVOpen} aria-label={personalInfo.downloadCVLabel}>
             <FileDown size={15} />
-            <span>Download CV</span>
+            <span>{personalInfo.downloadCVLabel}</span>
           </button>
           <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}

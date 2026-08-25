@@ -6,7 +6,7 @@ import { achievements, personalInfo } from "../../constants";
 describe("Achievements", () => {
   it("renders the section title", () => {
     render(<Achievements />);
-    expect(screen.getByText("Achievements")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.achievementsTitle)).toBeInTheDocument();
   });
 
   it("renders subtitle", () => {
@@ -23,7 +23,7 @@ describe("Achievements", () => {
 
   it("renders the note with link to certificates", () => {
     render(<Achievements />);
-    const link = screen.getByRole("link", { name: "Certificates" });
+    const link = screen.getByRole("link", { name: personalInfo.certificatesTitle });
     expect(link).toHaveAttribute("href", "#certificates");
   });
 

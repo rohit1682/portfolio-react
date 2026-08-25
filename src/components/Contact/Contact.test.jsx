@@ -14,7 +14,7 @@ describe("Contact", () => {
 
   it("renders the section title", () => {
     render(<Contact />);
-    expect(screen.getByText("Get In Touch")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.contactTitle)).toBeInTheDocument();
   });
 
   it("renders contact heading from constants", () => {

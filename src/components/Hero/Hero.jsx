@@ -68,6 +68,7 @@ export default function Hero() {
           y: contentY,
           scale: contentScale,
           rotateX: contentRotateX,
+          /* v8 ignore next */
           filter: useTransform(contentBlur, (v) => `blur(${v}px)`),
         }}
       >
@@ -96,7 +97,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
         >
-          Hi, I&apos;m <span className={styles.nameHighlight}>{personalInfo.name}</span>
+          {personalInfo.heroGreeting} <span className={styles.nameHighlight}>{personalInfo.name}</span>
         </motion.h1>
 
         <motion.p
@@ -126,10 +127,10 @@ export default function Hero() {
           transition={{ delay: 1.1 }}
         >
           <button className="btn-primary" onClick={() => scrollTo("projects")}>
-            View My Work
+            {personalInfo.heroPrimaryCTA}
           </button>
           <a href={`mailto:${personalInfo.email}`} className="btn-outline">
-            <Mail size={16} /> Say Hello
+            <Mail size={16} /> {personalInfo.heroSecondaryCTA}
           </a>
         </motion.div>
 

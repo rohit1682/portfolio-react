@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Projects from "./Projects";
-import { projects } from "../../constants";
+import { projects, personalInfo } from "../../constants";
 
 describe("Projects", () => {
   it("renders the section title", () => {
     render(<Projects />);
-    expect(screen.getByText("Projects")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.projectsTitle)).toBeInTheDocument();
   });
 
   it("renders all projects by default", () => {
@@ -25,8 +25,8 @@ describe("Projects", () => {
 
   it("has filter buttons", () => {
     render(<Projects />);
-    expect(screen.getByText("All")).toBeInTheDocument();
-    expect(screen.getByText("More")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.projectFilters.all)).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.projectFilters.more)).toBeInTheDocument();
   });
 
   it("filters to featured only", () => {
@@ -42,7 +42,7 @@ describe("Projects", () => {
   it("filters to others only", () => {
     render(<Projects />);
     const others = projects.filter((p) => !p.featured);
-    fireEvent.click(screen.getByText("More"));
+    fireEvent.click(screen.getByText(personalInfo.projectFilters.more));
     if (others.length > 0) {
       others.forEach((p) => {
         expect(screen.getByText(p.title)).toBeInTheDocument();
@@ -52,8 +52,8 @@ describe("Projects", () => {
 
   it("shows all when clicking All after filter", () => {
     render(<Projects />);
-    fireEvent.click(screen.getByText("More"));
-    fireEvent.click(screen.getByText("All"));
+    fireEvent.click(screen.getByText(personalInfo.projectFilters.more));
+    fireEvent.click(screen.getByText(personalInfo.projectFilters.all));
     projects.forEach((p) => {
       expect(screen.getByText(p.title)).toBeInTheDocument();
     });
@@ -72,7 +72,7 @@ describe("Projects", () => {
     const featured = projects.filter((p) => p.featured);
     if (featured.length > 0) {
       render(<Projects />);
-      expect(screen.getAllByText("Featured", { exact: false }).length).toBeGreaterThan(0);
+      expect(screen.getAllByText(personalInfo.featuredLabel, { exact: false }).length).toBeGreaterThan(0);
     }
   });
 

@@ -44,12 +44,12 @@ describe("Hero", () => {
 
   it("renders View My Work button", () => {
     render(<Hero />);
-    expect(screen.getByText("View My Work")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.heroPrimaryCTA)).toBeInTheDocument();
   });
 
   it("renders Say Hello link", () => {
     render(<Hero />);
-    const link = screen.getByText("Say Hello");
+    const link = screen.getByText(personalInfo.heroSecondaryCTA);
     expect(link.closest("a")).toHaveAttribute("href", `mailto:${personalInfo.email}`);
   });
 
@@ -69,7 +69,7 @@ describe("Hero", () => {
     el.scrollIntoView = vi.fn();
     document.body.appendChild(el);
     render(<Hero />);
-    fireEvent.click(screen.getByText("View My Work"));
+    fireEvent.click(screen.getByText(personalInfo.heroPrimaryCTA));
     expect(el.scrollIntoView).toHaveBeenCalled();
     document.body.removeChild(el);
   });

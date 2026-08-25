@@ -41,7 +41,7 @@ export default function Education() {
   return (
     <section id="education" className="section-wrapper section-bg section-3d">
       <div className="container">
-        <SectionTitle title="Education" subtitle={personalInfo.educationTagline} />
+        <SectionTitle title={personalInfo.educationTitle} subtitle={personalInfo.educationTagline} />
 
         <div className={styles.grid}>
           <div>

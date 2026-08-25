@@ -35,7 +35,7 @@ export default function CommandPalette({ onOpenCV }) {
       id: `project-${p.id}`,
       label: p.title,
       hint: p.subtitle,
-      group: "Projects",
+      group: personalInfo.projectsTitle,
       icon: <FolderOpen size={15} />,
       /* v8 ignore next 3 */
       run: () => p.github && p.github !== "#"
@@ -47,7 +47,7 @@ export default function CommandPalette({ onOpenCV }) {
       id: `cert-${c.title}`,
       label: c.title,
       hint: c.issuer,
-      group: "Certificates",
+      group: personalInfo.certificatesTitle,
       icon: <Award size={15} />,
       /* v8 ignore next */
       run: () => window.open(encodeURI(c.file), "_blank", "noreferrer"),
@@ -56,7 +56,7 @@ export default function CommandPalette({ onOpenCV }) {
     /* v8 ignore start */
     const actions = [
       {
-        id: "act-cv", label: "Download CV",
+        id: "act-cv", label: personalInfo.downloadCVLabel,
         hint: "Open the CV theme picker", group: "Actions",
         icon: <FileDown size={15} />, run: () => onOpenCV?.(),
       },
@@ -86,7 +86,7 @@ export default function CommandPalette({ onOpenCV }) {
         icon: <Briefcase size={15} />, run: () => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" }),
       },
       {
-        id: "act-edu", label: "Education", hint: personalInfo.degree,
+        id: "act-edu", label: personalInfo.educationTitle, hint: personalInfo.degree,
         group: "Actions", icon: <GraduationCap size={15} />,
         run: () => document.getElementById("education")?.scrollIntoView({ behavior: "smooth" }),
       },

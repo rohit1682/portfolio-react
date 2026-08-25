@@ -12,7 +12,7 @@ export default function Achievements() {
   return (
     <section id="achievements" className="section-wrapper section-bg section-3d">
       <div className="container">
-        <SectionTitle title="Achievements" subtitle={personalInfo.achievementsTagline} />
+        <SectionTitle title={personalInfo.achievementsTitle} subtitle={personalInfo.achievementsTagline} />
 
         <motion.p
           className={styles.note}
@@ -21,7 +21,7 @@ export default function Achievements() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          🏆 Awards & Recognition — see the dedicated <a href="#certificates">Certificates</a> section for credentials.
+          🏆 Awards & Recognition — see the dedicated <a href="#certificates">{personalInfo.certificatesTitle}</a> section for credentials.
         </motion.p>
 
         <div className={styles.achieveGrid}>

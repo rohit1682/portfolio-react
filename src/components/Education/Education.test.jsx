@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Education from "./Education";
-import { education, volunteer } from "../../constants";
+import { education, volunteer, personalInfo } from "../../constants";
 
 describe("Education", () => {
   it("renders the section title", () => {
     render(<Education />);
-    expect(screen.getByText("Education")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.educationTitle)).toBeInTheDocument();
   });
 
   it("renders education entries from constants", () => {

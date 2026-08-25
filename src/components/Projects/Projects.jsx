@@ -27,12 +27,12 @@ export default function Projects() {
   return (
     <section id="projects" className="section-wrapper section-3d">
       <div className="container">
-        <SectionTitle title="Projects" subtitle={personalInfo.projectsTagline} />
+        <SectionTitle title={personalInfo.projectsTitle} subtitle={personalInfo.projectsTagline} />
 
         <motion.div className={styles.filters} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           {["all", "featured", "others"].map(f => (
             <button key={f} className={`${styles.filterBtn} ${filter === f ? styles.filterActive : ""}`} onClick={() => setFilter(f)}>
-              {f === "all" ? "All" : f === "featured" ? "⭐ Featured" : "More"}
+              {f === "all" ? personalInfo.projectFilters.all : f === "featured" ? personalInfo.projectFilters.featured : personalInfo.projectFilters.more}
             </button>
           ))}
         </motion.div>
@@ -50,7 +50,7 @@ export default function Projects() {
                     hoverY={-8}
                     hoverShadow={project.featured ? "0 20px 60px rgba(180,30,45,0.2)" : "0 16px 40px rgba(0,0,0,0.4)"}
                   >
-                    {project.featured && <div className={styles.featuredBadge}><Star size={11} fill="currentColor" /> Featured</div>}
+                    {project.featured && <div className={styles.featuredBadge}><Star size={11} fill="currentColor" /> {personalInfo.featuredLabel}</div>}
                     <div className={styles.cardTop}>
                       <FolderOpen size={28} className={styles.folder} />
                       <div className={styles.links}>

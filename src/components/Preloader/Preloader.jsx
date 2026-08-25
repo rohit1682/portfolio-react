@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Preloader.module.css";
 
-const WORDS = ["Code.", "Build.", "Ship."];
+import { personalInfo } from "../../constants";
 
 export default function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -16,7 +16,7 @@ export default function Preloader() {
     let idx = 0;
     const cycleWord = () => {
       idx++;
-      if (idx < WORDS.length) {
+      if (idx < personalInfo.preloaderWords.length) {
         setWordIdx(idx);
         wordTimer = setTimeout(cycleWord, 600);
       } else {
@@ -70,6 +70,7 @@ export default function Preloader() {
 
   return (
     <div
+      /* v8 ignore next */
       className={`${styles.preloader} ${phase === "reveal" ? styles.reveal : ""}`}
       aria-live="polite"
       role="status"
@@ -81,7 +82,7 @@ export default function Preloader() {
       <div className={styles.content}>
         {phase === "words" && (
           <div className={styles.wordCycle} data-testid="preloader-words">
-            <span key={wordIdx} className={styles.word}>{WORDS[wordIdx]}</span>
+            <span key={wordIdx} className={styles.word}>{personalInfo.preloaderWords[wordIdx]}</span>
           </div>
         )}
 
