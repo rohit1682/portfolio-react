@@ -77,6 +77,24 @@ img {
   border-radius: 4px;
 }
 
+/* ── Click-to-blast page shake ── */
+html.blasted {
+  animation: pageShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
+}
+
+@keyframes pageShake {
+  0%, 100% { translate: 0 0; }
+  10% { translate: -4px -2px; }
+  20% { translate: 3px 4px; }
+  30% { translate: -5px 1px; }
+  40% { translate: 4px -3px; }
+  50% { translate: -2px 5px; }
+  60% { translate: 5px -1px; }
+  70% { translate: -3px 3px; }
+  80% { translate: 2px -4px; }
+  90% { translate: -4px 2px; }
+}
+
 /* ── Reduced motion: blanket safety net ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
