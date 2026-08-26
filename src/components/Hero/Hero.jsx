@@ -73,6 +73,9 @@ export default function Hero() {
     setBlasts((prev) => [...prev, { id, x, y, text }]);
     setTimeout(() => setBlasts((prev) => prev.filter((b) => b.id !== id)), 1500);
 
+    document.documentElement.classList.add("blasted");
+    setTimeout(() => document.documentElement.classList.remove("blasted"), 1200);
+
     if (contentRef.current) {
       contentRef.current.classList.add(styles.blasted);
       setTimeout(() => contentRef.current?.classList.remove(styles.blasted), 2800);
