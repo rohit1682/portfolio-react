@@ -1,5 +1,25 @@
 export const projects = [
   {
+    id: 8,
+    color: "linear-gradient(135deg, #1a1a2e 0%, #6c3483 50%, #e85d75 100%)",
+    title: "Metronorms",
+    subtitle: "Band Portfolio & Booking Platform",
+    description:
+      "A full-featured portfolio and booking platform for Metronorms, a 6-piece experimental rock band from Kolkata. Showcases band bio, member profiles, journey, streaming links, and a contact/booking form.",
+    tags: ["React", "TypeScript", "Vite", "Vercel", "Responsive Design"],
+    github: "https://github.com/rohit1682/metronorms-portfolio",
+    live: "https://metronorms.vercel.app",
+    featured: true,
+    status: "Completed",
+    features: [
+      "Band member profiles with role & photo cards",
+      "Music streaming integration (Spotify, Apple Music, YouTube Music)",
+      "Contact & booking form with mailto integration",
+      "Achievements timeline & venue showcase",
+      "Fully responsive with background audio player",
+    ],
+  },
+  {
     id: 1,
     color: "linear-gradient(135deg, #b91c2e 0%, #e85d75 50%, #f59e6b 100%)",
     title: "Energy-X",
@@ -124,29 +144,9 @@ export const projects = [
     features: ["Donor-NGO matching", "Location-based search", "Admin dashboard"],
   },
   {
-    id: 8,
-    color: "linear-gradient(135deg, #1a1a2e 0%, #6c3483 50%, #e85d75 100%)",
-    title: "Metronorms",
-    subtitle: "Band Portfolio & Booking Platform",
-    description:
-      "A full-featured portfolio and booking platform for Metronorms, a 6-piece experimental rock band from Kolkata. Showcases band bio, member profiles, journey, streaming links, and a contact/booking form.",
-    tags: ["React", "TypeScript", "Vite", "Vercel", "Responsive Design"],
-    github: "https://github.com/rohit1682/metronorms-portfolio",
-    live: "https://metronorms.vercel.app",
-    featured: true,
-    status: "Completed",
-    features: [
-      "Band member profiles with role & photo cards",
-      "Music streaming integration (Spotify, Apple Music, YouTube Music)",
-      "Contact & booking form with mailto integration",
-      "Achievements timeline & venue showcase",
-      "Fully responsive with background audio player",
-    ],
-  },
-  {
     id: 9,
     color: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
-    title: "PAUT Order Fix Automation",
+    title: "Order Fix Automation",
     subtitle: "BigCommerce + Azure Pipeline",
     description:
       "An automated 5-step pipeline that detects failed BigCommerce orders, applies targeted fixes via a handler registry, resends through Azure Service Bus DLQ, and verifies results — replacing a tedious manual process.",

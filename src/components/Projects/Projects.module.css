@@ -72,9 +72,13 @@
 }
 .featured:hover::after { opacity: 1; }
 
-.featuredBadge {
+.badges {
   position: absolute;
   top: 14px; right: 14px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.featuredBadge {
   display: flex; align-items: center; gap: 4px;
   font-size: 0.7rem; font-weight: 700;
   color: #ffc107;
@@ -84,8 +88,6 @@
 }
 
 .liveBadge {
-  position: absolute;
-  top: 14px; left: 14px;
   display: flex; align-items: center; gap: 5px;
   font-size: 0.68rem; font-weight: 700;
   color: #34d399;

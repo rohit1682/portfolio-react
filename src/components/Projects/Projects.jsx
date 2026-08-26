@@ -50,8 +50,12 @@ export default function Projects() {
                     hoverY={-8}
                     hoverShadow={project.featured ? "0 20px 60px rgba(180,30,45,0.2)" : "0 16px 40px rgba(0,0,0,0.4)"}
                   >
-                    {project.featured && <div className={styles.featuredBadge}><Star size={11} fill="currentColor" /> {personalInfo.featuredLabel}</div>}
-                    {project.live && project.live !== "#" && <div className={styles.liveBadge}><span className={styles.liveDot} />Live</div>}
+                    {(project.featured || (project.live && project.live !== "#")) && (
+                      <div className={styles.badges}>
+                        {project.live && project.live !== "#" && <div className={styles.liveBadge}><span className={styles.liveDot} />Live</div>}
+                        {project.featured && <div className={styles.featuredBadge}><Star size={11} fill="currentColor" /> {personalInfo.featuredLabel}</div>}
+                      </div>
+                    )}
                     <div className={styles.cardTop}>
                       <FolderOpen size={28} className={styles.folder} />
                       <div className={styles.links}>

@@ -9,7 +9,7 @@ A modern, immersive portfolio website built with React 19, featuring a 3D hero s
 - **Animation:** Framer Motion (scroll-driven transforms) + Lenis (smooth scroll)
 - **Styling:** CSS Modules, dark theme
 - **PDF:** @react-pdf/renderer (lazy-loaded CV generator)
-- **Testing:** Vitest + Testing Library + V8 coverage (>95% all metrics)
+- **Testing:** Vitest + Testing Library + V8 coverage (100% all metrics)
 - **Quality:** ESLint (zero warnings), Husky + lint-staged pre-commit hooks
 
 ## Features
@@ -71,6 +71,13 @@ src/
     SocialLinks/     # GitHub/LinkedIn/LeetCode links
     TiltCard/        # Shared mouse-tracking 3D tilt card
     Toast/           # Copy confirmation toast
+    Preloader/       # Animated page preloader
+    CustomCursor/    # Custom mouse cursor
+    Marquee/         # Scrolling text marquee
+    TextScramble/    # Scramble-reveal text effect
+    StripeTransition/# Stripe-wipe section divider
+    HeroLightning/   # Canvas lightning background
+    ScrollSection/   # Scroll-animation wrapper
   constants/         # All portfolio data (personal, projects, skills, etc.)
   hooks/             # useDeviceCapability, useScrollSection, animations
   styles/            # Global CSS, variables, utilities
@@ -79,7 +86,7 @@ src/
 
 ## Testing
 
-310 tests across 36 test files with >95% coverage on all metrics (statements, branches, functions, lines).
+354 tests across 43 test files with 100% coverage on all metrics (statements, branches, functions, lines). Tests are organized into nested `describe` suites by concern (rendering, filtering, interactions, modal, etc.).
 
 ```bash
 npm run test:coverage
@@ -93,6 +100,16 @@ Commits are gated by Husky + lint-staged:
 2. **Vitest** runs the full test suite with coverage thresholds
 
 A commit is blocked if either lint errors or coverage drops below 95%.
+
+## Deployment
+
+Built for GitHub Pages with Vite. The production build is generated with:
+
+```bash
+npm run build
+```
+
+Deploy the `dist/` directory to any static host (GitHub Pages, Vercel, Netlify).
 
 ## Customization
 

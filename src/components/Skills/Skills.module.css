@@ -40,8 +40,8 @@
   gap: 24px;
 }
 
-.barsGrid > div { height: 100%; display: flex; }
-.group { padding: 32px; height: 100%; }
+.barsGrid > div { display: flex; }
+.group { padding: 32px; flex: 1; }
 
 .category {
   font-size: 0.78rem;
