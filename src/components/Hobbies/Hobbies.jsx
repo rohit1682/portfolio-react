@@ -19,7 +19,7 @@ export default function Hobbies() {
   return (
     <section id="hobbies" className="section-wrapper section-3d">
       <div className="container">
-        <SectionTitle title="Beyond the Code" subtitle={personalInfo.hobbiesTagline} />
+        <SectionTitle title={personalInfo.hobbiesTitle} subtitle={personalInfo.hobbiesTagline} />
 
         <div className={styles.grid}>
           {hobbies.map((hobby, i) => {

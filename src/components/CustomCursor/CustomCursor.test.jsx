@@ -15,10 +15,11 @@ describe("CustomCursor", () => {
     });
   });
 
-  it("renders dot and ring elements", () => {
+  it("renders dot, ring, and pacman elements", () => {
     render(<CustomCursor />);
     expect(screen.getByTestId("cursor-dot")).toBeInTheDocument();
     expect(screen.getByTestId("cursor-ring")).toBeInTheDocument();
+    expect(screen.getByTestId("cursor-pacman")).toBeInTheDocument();
   });
 
   it("hides cursor when reduced motion is preferred", () => {

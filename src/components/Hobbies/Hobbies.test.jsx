@@ -6,7 +6,7 @@ import { hobbies, personalInfo } from "../../constants";
 describe("Hobbies", () => {
   it("renders the section title", () => {
     render(<Hobbies />);
-    expect(screen.getByText("Beyond the Code")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.hobbiesTitle)).toBeInTheDocument();
   });
 
   it("renders subtitle", () => {

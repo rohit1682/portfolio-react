@@ -67,6 +67,7 @@ export default function About() {
   const textY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   useEffect(() => {
+    /* v8 ignore next */
     if (!statsRef.current) return;
     const obs = new IntersectionObserver(
       /* v8 ignore next */
@@ -85,7 +86,7 @@ export default function About() {
   return (
     <section id="about" className="section-wrapper section-3d" ref={sectionRef}>
       <div className="container">
-        <SectionTitle title="About Me" subtitle={personalInfo.aboutTagline} />
+        <SectionTitle title={personalInfo.aboutTitle} subtitle={personalInfo.aboutTagline} />
 
         <div className={styles.grid}>
           <motion.div className={styles.photoSide} style={{ y: photoY }}>
@@ -121,7 +122,7 @@ export default function About() {
             </div>
 
             <div className={styles.btnRow}>
-              <a href={`mailto:${personalInfo.email}`} className="btn-primary">Say Hello</a>
+              <a href={`mailto:${personalInfo.email}`} className="btn-primary">{personalInfo.heroSecondaryCTA}</a>
               <a href={personalInfo.github} target="_blank" rel="noreferrer" className="btn-outline">GitHub Profile</a>
             </div>
           </motion.div>

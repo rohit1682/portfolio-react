@@ -61,7 +61,7 @@ export default function Footer() {
           whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(230,57,70,0.35)" }} whileTap={{ scale: 0.9 }}
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}>
-          <ArrowUp size={16} /><span>Top</span>
+          <ArrowUp size={16} /><span>{personalInfo.backToTopLabel}</span>
         </motion.button>
       </div>
     </footer>

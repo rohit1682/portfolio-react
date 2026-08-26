@@ -9,7 +9,7 @@ import styles from "./Education.module.css";
 function EduCard({ item, i, isVolunteer, side }) {
   const variant = side === "left" ? cardDramatic3D : cardDramatic3DAlt;
   return (
-    <motion.div variants={variant} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
+    <motion.div className={styles.cardWrap} variants={variant} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
       <TiltCard className={`card card--soft ${styles.card} ${isVolunteer ? styles.volunteerCard : ""}`} tiltRange={4} hoverY={-4}>
         <div className={styles.cardTop}>
           <div className={styles.iconWrap}>{isVolunteer ? <Users size={18} /> : <GraduationCap size={18} />}</div>
@@ -41,7 +41,7 @@ export default function Education() {
   return (
     <section id="education" className="section-wrapper section-bg section-3d">
       <div className="container">
-        <SectionTitle title="Education" subtitle={personalInfo.educationTagline} />
+        <SectionTitle title={personalInfo.educationTitle} subtitle={personalInfo.educationTagline} />
 
         <div className={styles.grid}>
           <div>

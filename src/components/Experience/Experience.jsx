@@ -73,7 +73,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section-wrapper section-3d" ref={sectionRef}>
       <div className="container">
-        <SectionTitle title="Experience" subtitle={personalInfo.experienceTagline} />
+        <SectionTitle title={personalInfo.experienceTitle} subtitle={personalInfo.experienceTagline} />
 
         <div className={styles.stickyWrap}>
           <div className={styles.timeline}>

@@ -42,7 +42,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section-wrapper section-bg section-3d">
       <div className="container">
-        <SectionTitle title="Get In Touch" subtitle="Have a project in mind or just want to say hi? My inbox is always open." />
+        <SectionTitle title={personalInfo.contactTitle} subtitle={personalInfo.contactTagline} />
 
         <div className={styles.grid}>
           <motion.div className={styles.info} variants={cardDramatic3D} custom={0} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>

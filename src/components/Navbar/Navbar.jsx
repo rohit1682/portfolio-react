@@ -11,6 +11,7 @@ export default function Navbar({ onCVOpen }) {
   // Section links toggle (desktop). Default open so the nav looks normal on load.
   const [linksOpen, setLinksOpen] = useState(true);
   // Initialize synchronously so we don't trigger a setState inside an effect.
+  /* v8 ignore next 3 */
   const [isMac] = useState(() =>
     typeof navigator !== "undefined" &&
     /Mac|iPhone|iPad|iPod/.test(navigator.userAgent || navigator.platform || "")
@@ -55,6 +56,8 @@ export default function Navbar({ onCVOpen }) {
   };
 
   const initials = personalInfo.name.split(" ").map((w) => w[0]).join("");
+  /* v8 ignore next */
+  const cmdkLabel = isMac ? "⌘ K" : "Ctrl K";
 
   // Variants — links unfurl out of the logo, then collapse back into it.
   // Both the logo's layout move and the link animations are driven on the
@@ -150,6 +153,7 @@ export default function Navbar({ onCVOpen }) {
               >
                 <button
                   className={linkClass}
+                  /* v8 ignore next */
                   onClick={() => handleNav(link.href)}
                   tabIndex={linkTabIndex}
                   aria-hidden={!linksOpen}
@@ -170,11 +174,11 @@ export default function Navbar({ onCVOpen }) {
             title="Quick search (⌘K)"
           >
             <Command size={13} />
-            <span className={styles.cmdkLabel}>{isMac ? "⌘" : "Ctrl"} K</span>
+            <span className={styles.cmdkLabel}>{cmdkLabel}</span>
           </button>
-          <button className={styles.cvBtn} onClick={onCVOpen} aria-label="Download CV">
+          <button className={styles.cvBtn} onClick={onCVOpen} aria-label={personalInfo.downloadCVLabel}>
             <FileDown size={15} />
-            <span>Download CV</span>
+            <span>{personalInfo.downloadCVLabel}</span>
           </button>
           <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}

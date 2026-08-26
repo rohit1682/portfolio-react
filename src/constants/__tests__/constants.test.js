@@ -28,6 +28,46 @@ describe("personalInfo", () => {
     expect(personalInfo.footerTagline).toBeTruthy();
   });
 
+  it("has section titles", () => {
+    expect(personalInfo.heroGreeting).toBeTruthy();
+    expect(personalInfo.heroPrimaryCTA).toBeTruthy();
+    expect(personalInfo.heroSecondaryCTA).toBeTruthy();
+    expect(personalInfo.aboutTitle).toBeTruthy();
+    expect(personalInfo.skillsTitle).toBeTruthy();
+    expect(personalInfo.experienceTitle).toBeTruthy();
+    expect(personalInfo.educationTitle).toBeTruthy();
+    expect(personalInfo.projectsTitle).toBeTruthy();
+    expect(personalInfo.achievementsTitle).toBeTruthy();
+    expect(personalInfo.certificatesTitle).toBeTruthy();
+    expect(personalInfo.hobbiesTitle).toBeTruthy();
+    expect(personalInfo.contactTitle).toBeTruthy();
+  });
+
+  it("has UI labels and configuration", () => {
+    expect(personalInfo.preloaderWords).toBeInstanceOf(Array);
+    expect(personalInfo.preloaderWords.length).toBeGreaterThan(0);
+    expect(personalInfo.skillsTabs.proficiency).toBeTruthy();
+    expect(personalInfo.skillsTabs.all).toBeTruthy();
+    expect(personalInfo.projectFilters.all).toBeTruthy();
+    expect(personalInfo.projectFilters.featured).toBeTruthy();
+    expect(personalInfo.projectFilters.more).toBeTruthy();
+    expect(personalInfo.featuredLabel).toBeTruthy();
+    expect(personalInfo.downloadCVLabel).toBeTruthy();
+    expect(personalInfo.backToTopLabel).toBeTruthy();
+    expect(personalInfo.contactTagline).toBeTruthy();
+  });
+
+  it("has section taglines", () => {
+    expect(personalInfo.aboutTagline).toBeTruthy();
+    expect(personalInfo.skillsTagline).toBeTruthy();
+    expect(personalInfo.experienceTagline).toBeTruthy();
+    expect(personalInfo.educationTagline).toBeTruthy();
+    expect(personalInfo.projectsTagline).toBeTruthy();
+    expect(personalInfo.achievementsTagline).toBeTruthy();
+    expect(personalInfo.certificatesTagline).toBeTruthy();
+    expect(personalInfo.hobbiesTagline).toBeTruthy();
+  });
+
   it("has photos object", () => {
     expect(personalInfo.photos).toBeDefined();
     expect(personalInfo.photos.profile).toBeTruthy();

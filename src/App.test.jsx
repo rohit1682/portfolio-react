@@ -1,36 +1,33 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import App from "./App";
-
-vi.mock("./components/HeroLightning/HeroLightning", () => ({
-  default: () => <canvas data-testid="hero-lightning" />,
-}));
+import { personalInfo } from "./constants";
 
 describe("App", () => {
   it("renders without crashing", () => {
     render(<App />);
-    expect(screen.getByText("About Me")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.aboutTitle)).toBeInTheDocument();
   });
 
   it("renders all major sections", () => {
     render(<App />);
-    expect(screen.getAllByText("Skills").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Experience").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Education").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Projects").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Achievements").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Certificates").length).toBeGreaterThan(0);
-    expect(screen.getByText("Get In Touch")).toBeInTheDocument();
+    expect(screen.getAllByText(personalInfo.skillsTitle).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.experienceTitle).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.educationTitle).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.projectsTitle).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.achievementsTitle).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.certificatesTitle).length).toBeGreaterThan(0);
+    expect(screen.getByText(personalInfo.contactTitle)).toBeInTheDocument();
   });
 
   it("renders the navbar with Download CV button", () => {
     render(<App />);
-    expect(screen.getByText("Download CV")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.downloadCVLabel)).toBeInTheDocument();
   });
 
   it("clicking Download CV opens CV preview", async () => {
     render(<App />);
-    const btn = screen.getByText("Download CV");
+    const btn = screen.getByText(personalInfo.downloadCVLabel);
     await act(async () => {
       fireEvent.click(btn);
     });

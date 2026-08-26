@@ -77,7 +77,7 @@ describe("CommandPalette", () => {
   it("renders Download CV action", () => {
     render(<CommandPalette onOpenCV={onOpenCV} />);
     fireEvent.keyDown(window, { key: "k", metaKey: true });
-    expect(screen.getByText("Download CV")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.downloadCVLabel)).toBeInTheDocument();
   });
 
   it("filters items by search query", () => {
@@ -93,7 +93,7 @@ describe("CommandPalette", () => {
     fireEvent.keyDown(window, { key: "k", metaKey: true });
     const input = screen.getByPlaceholderText(/search|type/i);
     fireEvent.change(input, { target: { value: "Actions" } });
-    expect(screen.getByText("Download CV")).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.downloadCVLabel)).toBeInTheDocument();
   });
 
   it("filters by hint text", () => {
@@ -150,7 +150,7 @@ describe("CommandPalette", () => {
   it("clicking Download CV item calls onOpenCV", () => {
     render(<CommandPalette onOpenCV={onOpenCV} />);
     fireEvent.keyDown(window, { key: "k", metaKey: true });
-    fireEvent.click(screen.getByText("Download CV"));
+    fireEvent.click(screen.getByText(personalInfo.downloadCVLabel));
     expect(onOpenCV).toHaveBeenCalled();
   });
 
@@ -227,7 +227,7 @@ describe("CommandPalette", () => {
   it("renders certificate items", () => {
     render(<CommandPalette onOpenCV={onOpenCV} />);
     fireEvent.keyDown(window, { key: "k", metaKey: true });
-    expect(screen.getAllByText("Certificates").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(personalInfo.certificatesTitle).length).toBeGreaterThan(0);
   });
 
   it("renders keyboard shortcut hints in footer", () => {
