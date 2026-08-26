@@ -1,11 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import App from "./App";
 import { personalInfo } from "./constants";
-
-vi.mock("./components/HeroLightning/HeroLightning", () => ({
-  default: () => <canvas data-testid="hero-lightning" />,
-}));
 
 describe("App", () => {
   it("renders without crashing", () => {

@@ -3,10 +3,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Hero from "./Hero";
 import { personalInfo } from "../../constants";
 
-vi.mock("../HeroLightning/HeroLightning", () => ({
-  default: () => <canvas data-testid="hero-lightning" />,
-}));
-
 vi.mock("../SocialLinks/SocialLinks", () => ({
   default: () => <div data-testid="social-links">SocialLinks</div>,
 }));

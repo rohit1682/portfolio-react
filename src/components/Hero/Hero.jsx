@@ -1,15 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Mail, MapPin, Briefcase } from "lucide-react";
 import { personalInfo } from "../../constants";
 import SocialLinks from "../SocialLinks/SocialLinks";
-import HeroLightning from "../HeroLightning/HeroLightning";
 import styles from "./Hero.module.css";
+
+const BLAST_TEXTS = ["BOOM!", "POW!", "WHAM!", "ZAP!", "BANG!"];
 
 export default function Hero() {
   const sectionRef = useRef(null);
+  const contentRef = useRef(null);
   const typedRef = useRef(null);
   const stateRef = useRef({ index: 0, char: 0, deleting: false });
+  const lastBlastRef = useRef(0);
+  const [blasts, setBlasts] = useState([]);
 
   /* v8 ignore start */
   useEffect(() => {
@@ -54,14 +58,42 @@ export default function Hero() {
   /* v8 ignore next */
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
+  /* v8 ignore start */
+  const handleBlast = useCallback((e) => {
+    const now = Date.now();
+    if (now - lastBlastRef.current < 2500) return;
+    lastBlastRef.current = now;
+
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const id = now;
+    const text = BLAST_TEXTS[Math.floor(Math.random() * BLAST_TEXTS.length)];
+    setBlasts((prev) => [...prev, { id, x, y, text }]);
+    setTimeout(() => setBlasts((prev) => prev.filter((b) => b.id !== id)), 1500);
+
+    if (contentRef.current) {
+      contentRef.current.classList.add(styles.blasted);
+      setTimeout(() => contentRef.current?.classList.remove(styles.blasted), 2800);
+    }
+  }, []);
+  /* v8 ignore stop */
+
   return (
-    <section id="hero" className={styles.hero} ref={sectionRef}>
+    <section id="hero" className={styles.hero} ref={sectionRef} onClick={handleBlast}>
       <div className={styles.bgImage} style={{ backgroundImage: `url(${personalInfo.photos.cover})` }} />
-      <HeroLightning />
       <div className={styles.bgOverlay} />
       <div className={styles.orb1} /><div className={styles.orb2} /><div className={styles.orb3} />
 
+      {blasts.map((b) => (
+        <span key={b.id} className={styles.blastText} style={{ left: b.x, top: b.y }}>
+          {b.text}
+        </span>
+      ))}
+
       <motion.div
+        ref={contentRef}
         className={styles.content}
         style={{
           opacity: contentOpacity,

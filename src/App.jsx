@@ -19,6 +19,7 @@ import CustomCursor from "./components/CustomCursor/CustomCursor";
 import Marquee from "./components/Marquee/Marquee";
 import ScrollSection from "./components/ScrollSection/ScrollSection";
 import StripeTransition from "./components/StripeTransition/StripeTransition";
+import Code3D from "./components/Code3D/Code3D";
 import { personalInfo } from "./constants";
 
 const CVPreview = lazy(() => import("./components/CVPreview/CVPreview"));
@@ -41,6 +42,7 @@ export default function App() {
         <ScrollSection preset="slideLeft"><Experience /></ScrollSection>
         <ScrollSection preset="slideRight"><Education /></ScrollSection>
         <ScrollSection preset="zoomFade"><Projects /></ScrollSection>
+        <Code3D />
         <Marquee items={personalInfo.marqueeItems} />
         <StripeTransition />
         <ScrollSection preset="perspectiveRise"><Achievements /></ScrollSection>

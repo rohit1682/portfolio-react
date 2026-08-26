@@ -1,0 +1,54 @@
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  overflow: hidden;
+}
+
+.scene {
+  perspective: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.front,
+.layer {
+  display: block;
+  font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.front {
+  position: relative;
+  z-index: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 20px rgba(230, 57, 70, 0.35));
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(185, 28, 46, 0.12);
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .section { padding: 40px 16px; }
+}

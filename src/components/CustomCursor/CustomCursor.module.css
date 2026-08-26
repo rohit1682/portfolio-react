@@ -42,6 +42,50 @@
   left: -14px;
 }
 
+/* ── Pac-Man follower ── */
+.pacman {
+  position: fixed;
+  top: -14px;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffd700;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  clip-path: polygon(
+    100% 74%, 50% 50%, 100% 26%,
+    100% 0%, 0% 0%, 0% 100%, 100% 100%
+  );
+  animation: chomp 0.2s ease-in-out infinite alternate;
+}
+
+.pacEye {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #111;
+  border-radius: 50%;
+  top: 5px;
+  left: 15px;
+}
+
+@keyframes chomp {
+  0% {
+    clip-path: polygon(
+      100% 55%, 50% 50%, 100% 45%,
+      100% 0%, 0% 0%, 0% 100%, 100% 100%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      100% 74%, 50% 50%, 100% 26%,
+      100% 0%, 0% 0%, 0% 100%, 100% 100%
+    );
+  }
+}
+
 :global(.custom-cursor-active) {
   cursor: none;
 }
